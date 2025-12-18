@@ -1,15 +1,10 @@
 // conversation/stateMachine.ts
 
-import { ConversationState, INITIAL_STATE } from "./states";
+import { INITIAL_STATE } from "./states";
 import { ConversationEvent } from "./events";
 import { resolveIntent } from "./intents";
 import { nextState } from "./transitions";
-
-export type ConversationContext = {
-  state: ConversationState;
-  previousState?: ConversationState;
-  selectedProject?: string;
-};
+import { ConversationContext } from "@/types";
 
 export const initialContext: ConversationContext = {
   state: INITIAL_STATE,
