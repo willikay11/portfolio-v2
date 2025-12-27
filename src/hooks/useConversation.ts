@@ -20,6 +20,25 @@ function createMessage(
   };
 }
 
+function streamMessage(
+  fullText: string,
+  onUpdate: (partial: string) => void,
+  onDone: () => void
+) {
+  const words = fullText.split(" ");
+  let index = 0;
+
+  const interval = setInterval(() => {
+    index++;
+    onUpdate(words.slice(0, index).join(" "));
+
+    if (index === words.length) {
+      clearInterval(interval);
+      onDone();
+    }
+  }, 40); // adjust speed here
+}
+
 export function useConversation() {
   const [isTyping, setIsTyping] = useState(false);
   const [context, setContext] =
@@ -51,23 +70,41 @@ export function useConversation() {
     });
   }, []);
 
-  const sendMessage = useCallback((text: string) => {
-    dispatch({ type: "USER_MESSAGE", payload: text });
+const sendMessage = useCallback((text: string) => {
+  dispatch({ type: "USER_MESSAGE", payload: text });
+  setIsTyping(true);
 
-    setIsTyping(true);
+  const response = getResponse(context);
 
-    setTimeout(() => {
-      const response = getResponse(context);
+  const assistantId = crypto.randomUUID();
 
-      setMessages((msgs) => [
-        ...msgs,
-        createMessage("assistant", response.message),
-      ]);
+  // Insert empty assistant message
+  setMessages((msgs) => [
+    ...msgs,
+    {
+      id: assistantId,
+      role: "assistant",
+      content: "",
+    },
+  ]);
 
+  streamMessage(
+    response.message,
+    (partial) => {
+      setMessages((msgs) =>
+        msgs.map((msg) =>
+          msg.id === assistantId
+            ? { ...msg, content: partial }
+            : msg
+        )
+      );
+    },
+    () => {
       setSuggestions(response.suggestions ?? []);
       setIsTyping(false);
-    }, 600); // tweak for realism
-  }, [context]);
+    }
+  );
+}, [context]);
 
   const goBack = () => dispatch({ type: "BACK" });
   const reset = () => dispatch({ type: "RESET" });
