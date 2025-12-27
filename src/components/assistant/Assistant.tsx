@@ -5,6 +5,7 @@ import { MessageBubble } from "./MessageBubble";
 import { Suggestions } from "./Suggestions";
 import { InputBar } from "./InputBar";
 import { TypingIndicator } from "./TypingIndicator";
+import { useEffect, useRef } from "react";
 
 export function Assistant() {
   const {
@@ -14,6 +15,16 @@ export function Assistant() {
     isTyping,
   } = useConversation();
 
+  const bottomRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (isTyping) {
+      bottomRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "end",
+      });
+    }
+  }, [isTyping]);
   return (
     <div className="flex h-screen flex-col bg-neutral-950 text-white">
       {/* Header */}
@@ -30,6 +41,8 @@ export function Assistant() {
         ))}
 
         {isTyping && <TypingIndicator />}
+
+        <div ref={bottomRef} />
       </main>
 
       {/* Suggestions */}
