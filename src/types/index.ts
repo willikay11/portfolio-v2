@@ -1,3 +1,3 @@
-export * from "./message";
-export * from "./conversationContext";
+export * from "./Message";
+export * from "./ConversationContext";
 export * from "./ConversationState";

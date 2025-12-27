@@ -1,6 +1,6 @@
 // conversation/transitions.ts
 
-import { ConversationState } from "./states";
+import { ConversationState } from "@/types";
 import { Intent } from "./intents";
 
 export function nextState(
