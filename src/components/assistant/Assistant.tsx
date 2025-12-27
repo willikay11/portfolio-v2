@@ -4,12 +4,14 @@ import { useConversation } from "@/hooks/useConversation";
 import { MessageBubble } from "./MessageBubble";
 import { Suggestions } from "./Suggestions";
 import { InputBar } from "./InputBar";
+import { TypingIndicator } from "./TypingIndicator";
 
 export function Assistant() {
   const {
     messages,
     suggestions,
     sendMessage,
+    isTyping,
   } = useConversation();
 
   return (
@@ -26,6 +28,8 @@ export function Assistant() {
         {messages.map((msg) => (
           <MessageBubble key={msg.id} message={msg} />
         ))}
+
+        {isTyping && <TypingIndicator />}
       </main>
 
       {/* Suggestions */}

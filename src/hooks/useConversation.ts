@@ -21,6 +21,7 @@ function createMessage(
 }
 
 export function useConversation() {
+  const [isTyping, setIsTyping] = useState(false);
   const [context, setContext] =
     useState<ConversationContext>(initialContext);
 
@@ -50,12 +51,23 @@ export function useConversation() {
     });
   }, []);
 
-  const sendMessage = useCallback(
-    (text: string) => {
-      dispatch({ type: "USER_MESSAGE", payload: text });
-    },
-    [dispatch]
-  );
+  const sendMessage = useCallback((text: string) => {
+    dispatch({ type: "USER_MESSAGE", payload: text });
+
+    setIsTyping(true);
+
+    setTimeout(() => {
+      const response = getResponse(context);
+
+      setMessages((msgs) => [
+        ...msgs,
+        createMessage("assistant", response.message),
+      ]);
+
+      setSuggestions(response.suggestions ?? []);
+      setIsTyping(false);
+    }, 600); // tweak for realism
+  }, [context]);
 
   const goBack = () => dispatch({ type: "BACK" });
   const reset = () => dispatch({ type: "RESET" });
@@ -71,5 +83,6 @@ export function useConversation() {
     goBack,
     reset,
     state: context.state,
+    isTyping,
   };
 }
