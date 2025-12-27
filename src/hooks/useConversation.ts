@@ -20,7 +20,27 @@ function createMessage(
   };
 }
 
+function streamMessage(
+  fullText: string,
+  onUpdate: (partial: string) => void,
+  onDone: () => void
+) {
+  const words = fullText.split(" ");
+  let index = 0;
+
+  const interval = setInterval(() => {
+    index++;
+    onUpdate(words.slice(0, index).join(" "));
+
+    if (index === words.length) {
+      clearInterval(interval);
+      onDone();
+    }
+  }, 40); // adjust speed here
+}
+
 export function useConversation() {
+  const [isTyping, setIsTyping] = useState(false);
   const [context, setContext] =
     useState<ConversationContext>(initialContext);
 
@@ -50,12 +70,41 @@ export function useConversation() {
     });
   }, []);
 
-  const sendMessage = useCallback(
-    (text: string) => {
-      dispatch({ type: "USER_MESSAGE", payload: text });
+const sendMessage = useCallback((text: string) => {
+  dispatch({ type: "USER_MESSAGE", payload: text });
+  setIsTyping(true);
+
+  const response = getResponse(context);
+
+  const assistantId = crypto.randomUUID();
+
+  // Insert empty assistant message
+  setMessages((msgs) => [
+    ...msgs,
+    {
+      id: assistantId,
+      role: "assistant",
+      content: "",
     },
-    [dispatch]
+  ]);
+
+  streamMessage(
+    response.message,
+    (partial) => {
+      setMessages((msgs) =>
+        msgs.map((msg) =>
+          msg.id === assistantId
+            ? { ...msg, content: partial }
+            : msg
+        )
+      );
+    },
+    () => {
+      setSuggestions(response.suggestions ?? []);
+      setIsTyping(false);
+    }
   );
+}, [context]);
 
   const goBack = () => dispatch({ type: "BACK" });
   const reset = () => dispatch({ type: "RESET" });
@@ -71,5 +120,6 @@ export function useConversation() {
     goBack,
     reset,
     state: context.state,
+    isTyping,
   };
 }
