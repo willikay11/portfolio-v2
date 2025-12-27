@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { Assistant } from "@/components/assistant/Assistant";
 
 export default function Home() {
   return <Assistant />;

@@ -1,6 +1,6 @@
 // conversation/responses.ts
 
-import { ConversationContext } from "./stateMachine";
+import { ConversationContext } from "@/types";
 
 export type AssistantResponse = {
   message: string;
