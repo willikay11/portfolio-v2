@@ -20,6 +20,8 @@ export function Assistant() {
 
   const [isUserAtBottom, setIsUserAtBottom] = useState(true);
 
+  console.log('messages', messages);
+  
   useEffect(() => {
     if (isTyping) {
       bottomRef.current?.scrollIntoView({
