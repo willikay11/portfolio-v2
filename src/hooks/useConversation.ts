@@ -7,7 +7,8 @@ import {
 } from "@/conversation";
 import { getResponse } from "@/conversation/responses";
 import { ConversationEvent } from "@/conversation/events";
-import { ConversationContext, Message } from "@/types";
+import { ConversationContext } from "@/types";
+import type { Message } from "@/types/Message";
 
 function createMessage(
   role: "user" | "assistant",

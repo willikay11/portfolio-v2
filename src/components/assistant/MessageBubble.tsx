@@ -1,6 +1,6 @@
 
 'use client';
-import { Message } from "@/types";
+import type { Message } from "@/types/Message";
 import clsx from "clsx";
 import { motion } from "framer-motion";
 
