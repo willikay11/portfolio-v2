@@ -60,10 +60,10 @@ export function useConversation() {
         ]);
       }
 
-      setMessages((msgs) => [
-        ...msgs,
-        createMessage("assistant", response.message),
-      ]);
+      // setMessages((msgs) => [
+      //   ...msgs,
+      //   createMessage("assistant", response.message),
+      // ]);
 
       setSuggestions(response.suggestions ?? []);
 
