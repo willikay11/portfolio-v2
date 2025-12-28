@@ -1,11 +1,10 @@
 // conversation/responses.ts
 
-import { ConversationContext } from "@/types";
+import { ConversationContext, Project } from "@/types";
 
-export type AssistantResponse = {
-  message: string;
-  suggestions?: string[];
-};
+export type AssistantResponse =
+  | { type: "text"; message: string; suggestions?: string[] }
+  | { type: "projects"; projects: Project[]; suggestions?: string[] };
 
 export function getResponse(
   context: ConversationContext
@@ -45,6 +44,7 @@ export function getResponse(
 
 function greetingResponse(): AssistantResponse {
   return {
+    type: "text",
     message:
       "Hey 👋 I’m William, a Lead Software Engineer.\n\n" +
       "You can explore my work, skills, or experience — just ask.",
@@ -58,6 +58,7 @@ function greetingResponse(): AssistantResponse {
 
 function aboutResponse(): AssistantResponse {
   return {
+    type: "text",
     message:
       "I’m a Lead Software Engineer who enjoys building scalable systems and leading teams.\n\n" +
       "I care deeply about clean architecture, performance, and developer experience.",
@@ -72,16 +73,25 @@ function aboutResponse(): AssistantResponse {
 
 function projectsResponse(): AssistantResponse {
   return {
-    message:
-      "Here are a few projects I’m proud of:\n\n" +
-      "• FastFol-inspired Portfolio\n" +
-      "• High-throughput Event System\n" +
-      "• Developer Tooling Platform\n\n" +
-      "Select one to dive deeper.",
-    suggestions: [
-      "Tell me about the FastFol-inspired Portfolio",
-      "Tell me about the Event System",
+    type: "projects",
+    projects: [
+      {
+        id: "fastfol",
+        title: "AI Portfolio (FastFol-inspired)",
+        description:
+          "An AI-driven portfolio experience with streaming responses.",
+        tags: ["Next.js", "AI", "UX"],
+        link: "https://example.com",
+      },
+      {
+        id: "events",
+        title: "High-throughput Event System",
+        description:
+          "Distributed event ingestion system processing millions/day.",
+        tags: ["Kafka", "Node.js", "Scaling"],
+      },
     ],
+    suggestions: ["Dive into AI Portfolio", "Show architecture"],
   };
 }
 
@@ -91,6 +101,7 @@ function projectDetailResponse(
   const project = context.selectedProject ?? "this project";
 
   return {
+    type: "text",
     message:
       `Let’s talk about **${project}**.\n\n` +
       "I focused on scalability, clean boundaries, and long-term maintainability.\n\n" +
@@ -105,6 +116,7 @@ function projectDetailResponse(
 
 function skillsResponse(): AssistantResponse {
   return {
+    type: "text",
     message:
       "My strongest skills span across the stack:\n\n" +
       "• Frontend: React, Next.js, TypeScript\n" +
@@ -119,6 +131,7 @@ function skillsResponse(): AssistantResponse {
 
 function experienceResponse(): AssistantResponse {
   return {
+    type: "text",
     message:
       "I’ve led teams, mentored engineers, and built systems used at scale.\n\n" +
       "My focus is aligning technical decisions with business impact.",
@@ -132,6 +145,7 @@ function experienceResponse(): AssistantResponse {
 
 function resumeResponse(): AssistantResponse {
   return {
+    type: "text",
     message:
       "You can download my resume below or connect with me directly.\n\n" +
       "I’m always happy to talk about interesting problems.",
@@ -144,6 +158,7 @@ function resumeResponse(): AssistantResponse {
 
 function contactResponse(): AssistantResponse {
   return {
+    type: "text",
     message:
       "The best way to reach me is via email or LinkedIn.\n\n" +
       "Looking forward to connecting 👋",
@@ -156,6 +171,7 @@ function contactResponse(): AssistantResponse {
 
 function funResponse(): AssistantResponse {
   return {
+    type: "text",
     message:
       "Outside of work, I enjoy breaking things (intentionally), learning new systems, and refining my craft.\n\n" +
       "I believe great engineers stay curious.",
@@ -168,6 +184,7 @@ function funResponse(): AssistantResponse {
 
 function fallbackResponse(): AssistantResponse {
   return {
+    type: "text",
     message:
       "I can tell you about my projects, skills, or experience.\nWhat would you like to explore?",
     suggestions: [

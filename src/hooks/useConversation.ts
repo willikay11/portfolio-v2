@@ -17,6 +17,7 @@ function createMessage(
   return {
     id: crypto.randomUUID(),
     role,
+    kind: "text",
     content,
   };
 }
@@ -66,8 +67,11 @@ export function useConversation() {
         payload: text,
       });
 
+      console.log("Transitioned to state:", nextContext);
       // 3. Derive assistant response from NEXT state
       const response = getResponse(nextContext);
+
+      console.log("Generated response:", response);
 
       // 4. Prepare assistant streaming
       setIsTyping(true);
@@ -78,27 +82,45 @@ export function useConversation() {
         {
           id: assistantId,
           role: "assistant",
+          kind: "text",
           content: "",
         },
       ]);
 
-      streamMessage(
-        response.message,
-        (partial) => {
-          setMessages((msgs) =>
-            msgs.map((msg) =>
-              msg.id === assistantId
-                ? { ...msg, content: partial }
-                : msg
-            )
-          );
-        },
-        () => {
-          setSuggestions(response.suggestions ?? []);
-          setIsTyping(false);
-        }
-      );
+      // determine text to stream based on response shape
+      if (response.type === "projects") {
+        setMessages((msgs) => [
+          ...msgs,
+          {
+            id: crypto.randomUUID(),
+            role: "assistant",
+            kind: "projects",
+            projects: response.projects,
+          },
+        ]);
 
+        setSuggestions(response.suggestions ?? []);
+        setIsTyping(false);
+      }
+
+      if (response.type === "text") {
+        streamMessage(
+          response.message,
+          (partial) => {
+            setMessages((msgs) =>
+              msgs.map((msg) =>
+                msg.id === assistantId
+                  ? { ...msg, content: partial }
+                  : msg
+              )
+            );
+          },
+          () => {
+            setSuggestions(response.suggestions ?? []);
+            setIsTyping(false);
+          }
+        );
+      }
       return nextContext;
     });
   }, []);

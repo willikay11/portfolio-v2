@@ -19,8 +19,6 @@ export function Assistant() {
   const scrollRef = useRef<HTMLDivElement | null>(null);
 
   const [isUserAtBottom, setIsUserAtBottom] = useState(true);
-
-  console.log('messages', messages);
   
   useEffect(() => {
     if (isTyping) {
