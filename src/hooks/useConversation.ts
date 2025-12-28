@@ -48,71 +48,71 @@ export function useConversation() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [suggestions, setSuggestions] = useState<string[]>([]);
 
-  const dispatch = useCallback((event: ConversationEvent) => {
+  const dispatchEvent = useCallback((event: ConversationEvent) => {
+    setContext((prev) => transition(prev, event));
+  }, []);
+
+  const sendMessage = useCallback((text: string) => {
+    // 1. User message (sync, always first)
+    setMessages((msgs) => [
+      ...msgs,
+      createMessage("user", text),
+    ]);
+
+    // 2. Advance conversation state
     setContext((prev) => {
-      const nextContext = transition(prev, event);
+      const nextContext = transition(prev, {
+        type: "USER_MESSAGE",
+        payload: text,
+      });
+
+      // 3. Derive assistant response from NEXT state
       const response = getResponse(nextContext);
 
-      if (event.type === "USER_MESSAGE") {
-        setMessages((msgs) => [
-          ...msgs,
-          createMessage("user", event.payload),
-        ]);
-      }
+      // 4. Prepare assistant streaming
+      setIsTyping(true);
+      const assistantId = crypto.randomUUID();
 
-      // setMessages((msgs) => [
-      //   ...msgs,
-      //   createMessage("assistant", response.message),
-      // ]);
+      setMessages((msgs) => [
+        ...msgs,
+        {
+          id: assistantId,
+          role: "assistant",
+          content: "",
+        },
+      ]);
 
-      setSuggestions(response.suggestions ?? []);
+      streamMessage(
+        response.message,
+        (partial) => {
+          setMessages((msgs) =>
+            msgs.map((msg) =>
+              msg.id === assistantId
+                ? { ...msg, content: partial }
+                : msg
+            )
+          );
+        },
+        () => {
+          setSuggestions(response.suggestions ?? []);
+          setIsTyping(false);
+        }
+      );
 
       return nextContext;
     });
   }, []);
 
-  const sendMessage = useCallback((text: string) => {
-    dispatch({ type: "USER_MESSAGE", payload: text });
-    setIsTyping(true);
 
-    const response = getResponse(context);
+  const goBack = () =>
+    setContext((prev) => transition(prev, { type: "BACK" }));
 
-    const assistantId = crypto.randomUUID();
-
-    // Insert empty assistant message
-    setMessages((msgs) => [
-      ...msgs,
-      {
-        id: assistantId,
-        role: "assistant",
-        content: "",
-      },
-    ]);
-
-    streamMessage(
-      response.message,
-      (partial) => {
-        setMessages((msgs) =>
-          msgs.map((msg) =>
-            msg.id === assistantId
-              ? { ...msg, content: partial }
-              : msg
-          )
-        );
-      },
-      () => {
-        setSuggestions(response.suggestions ?? []);
-        setIsTyping(false);
-      }
-    );
-  }, [context]);
-
-  const goBack = () => dispatch({ type: "BACK" });
-  const reset = () => dispatch({ type: "RESET" });
+  const reset = () =>
+    setContext((prev) => transition(prev, { type: "RESET" }));
 
   useEffect(() => {
-    dispatch({ type: "START" });
-  }, [dispatch]);
+    setContext((prev) => transition(prev, { type: "START" }));
+  }, []);
 
   return {
     messages,
