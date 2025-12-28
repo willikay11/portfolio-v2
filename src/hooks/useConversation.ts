@@ -7,7 +7,8 @@ import {
 } from "@/conversation";
 import { getResponse } from "@/conversation/responses";
 import { ConversationEvent } from "@/conversation/events";
-import { ConversationContext, Message } from "@/types";
+import { ConversationContext } from "@/types";
+import type { Message } from "../types/Message";
 
 function createMessage(
   role: "user" | "assistant",
@@ -70,41 +71,41 @@ export function useConversation() {
     });
   }, []);
 
-const sendMessage = useCallback((text: string) => {
-  dispatch({ type: "USER_MESSAGE", payload: text });
-  setIsTyping(true);
+  const sendMessage = useCallback((text: string) => {
+    dispatch({ type: "USER_MESSAGE", payload: text });
+    setIsTyping(true);
 
-  const response = getResponse(context);
+    const response = getResponse(context);
 
-  const assistantId = crypto.randomUUID();
+    const assistantId = crypto.randomUUID();
 
-  // Insert empty assistant message
-  setMessages((msgs) => [
-    ...msgs,
-    {
-      id: assistantId,
-      role: "assistant",
-      content: "",
-    },
-  ]);
+    // Insert empty assistant message
+    setMessages((msgs) => [
+      ...msgs,
+      {
+        id: assistantId,
+        role: "assistant",
+        content: "",
+      },
+    ]);
 
-  streamMessage(
-    response.message,
-    (partial) => {
-      setMessages((msgs) =>
-        msgs.map((msg) =>
-          msg.id === assistantId
-            ? { ...msg, content: partial }
-            : msg
-        )
-      );
-    },
-    () => {
-      setSuggestions(response.suggestions ?? []);
-      setIsTyping(false);
-    }
-  );
-}, [context]);
+    streamMessage(
+      response.message,
+      (partial) => {
+        setMessages((msgs) =>
+          msgs.map((msg) =>
+            msg.id === assistantId
+              ? { ...msg, content: partial }
+              : msg
+          )
+        );
+      },
+      () => {
+        setSuggestions(response.suggestions ?? []);
+        setIsTyping(false);
+      }
+    );
+  }, [context]);
 
   const goBack = () => dispatch({ type: "BACK" });
   const reset = () => dispatch({ type: "RESET" });

@@ -5,7 +5,7 @@ import { MessageBubble } from "./MessageBubble";
 import { Suggestions } from "./Suggestions";
 import { InputBar } from "./InputBar";
 import { TypingIndicator } from "./TypingIndicator";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export function Assistant() {
   const {
@@ -16,7 +16,12 @@ export function Assistant() {
   } = useConversation();
 
   const bottomRef = useRef<HTMLDivElement | null>(null);
+  const scrollRef = useRef<HTMLDivElement | null>(null);
 
+  const [isUserAtBottom, setIsUserAtBottom] = useState(true);
+
+  console.log('messages', messages);
+  
   useEffect(() => {
     if (isTyping) {
       bottomRef.current?.scrollIntoView({
@@ -25,6 +30,32 @@ export function Assistant() {
       });
     }
   }, [isTyping]);
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+
+    const handleScroll = () => {
+      const threshold = 80; // px from bottom
+      const atBottom =
+        el.scrollHeight - el.scrollTop - el.clientHeight < threshold;
+
+      setIsUserAtBottom(atBottom);
+    };
+
+    el.addEventListener("scroll", handleScroll);
+    return () => el.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    if (isTyping && isUserAtBottom) {
+      bottomRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "end",
+      });
+    }
+  }, [isTyping, messages, isUserAtBottom]);
+
   return (
     <div className="flex h-screen flex-col bg-neutral-950 text-white">
       {/* Header */}
@@ -35,7 +66,7 @@ export function Assistant() {
       </header>
 
       {/* Messages */}
-      <main className="flex-1 overflow-y-auto px-6 py-4 space-y-4">
+      <main ref={scrollRef} className="flex-1 overflow-y-auto px-6 py-4 space-y-4">
         {messages.map((msg) => (
           <MessageBubble key={msg.id} message={msg} />
         ))}
