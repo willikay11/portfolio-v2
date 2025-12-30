@@ -6,6 +6,7 @@ import { Suggestions } from "./Suggestions";
 import { InputBar } from "./InputBar";
 import { TypingIndicator } from "./TypingIndicator";
 import { useEffect, useRef, useState } from "react";
+import { useSearchParams } from 'next/navigation';
 
 export function Assistant() {
   const {
@@ -13,14 +14,14 @@ export function Assistant() {
     suggestions,
     sendMessage,
     isTyping,
+    dispatchEvent
   } = useConversation();
-
+  const searchParams = useSearchParams();
+  const query = searchParams.get('query');
   const bottomRef = useRef<HTMLDivElement | null>(null);
   const scrollRef = useRef<HTMLDivElement | null>(null);
 
   const [isUserAtBottom, setIsUserAtBottom] = useState(true);
-
-  console.log('messages', messages);
   
   useEffect(() => {
     if (isTyping) {
@@ -56,39 +57,45 @@ export function Assistant() {
     }
   }, [isTyping, messages, isUserAtBottom]);
 
+  // If a query param named `q` or `message` is provided, send it as the initial user message.
+  useEffect(() => {
+    if (!query) return;
+
+    if (query && query.trim().length > 0) {
+      dispatchEvent({ type: "START" })
+      sendMessage(String(query));
+    }
+    // only run on initial mount / when searchParams changes
+  }, [query, sendMessage]);
+
   return (
     <div className="flex h-screen flex-col bg-neutral-950 text-white">
-      {/* Header */}
-      <header className="border-b border-neutral-800 px-6 py-4">
-        <h1 className="text-lg font-semibold">
-          William Kamau — AI Portfolio
-        </h1>
-      </header>
+      <div className="grid grid-cols-12 gap-4">
+        <div className="md:col-start-4 md:col-end-10 flex h-screen flex-col">
 
-      {/* Messages */}
-      <main ref={scrollRef} className="flex-1 overflow-y-auto px-6 py-4 space-y-4">
-        {messages.map((msg) => (
-          <MessageBubble key={msg.id} message={msg} />
-        ))}
+          <main ref={scrollRef} className="flex-1 overflow-y-auto px-6 py-4 space-y-4">
+            {messages.map((msg) => (
+              <MessageBubble key={msg.id} message={msg} />
+            ))}
 
-        {isTyping && <TypingIndicator />}
+            {isTyping && <TypingIndicator />}
 
-        <div ref={bottomRef} />
-      </main>
+            <div ref={bottomRef} />
+          </main>
 
-      {/* Suggestions */}
-      {suggestions.length > 0 && (
-        <div className="border-t border-neutral-800 px-6 py-3">
-          <Suggestions
-            items={suggestions}
-            onSelect={sendMessage}
-          />
+          {suggestions.length > 0 && (
+            <div className="border-t border-neutral-800 px-6 py-3">
+              <Suggestions
+                items={suggestions}
+                onSelect={sendMessage}
+              />
+            </div>
+          )}
+
+          <div className="border-neutral-800 px-6 py-4">
+            <InputBar onSend={sendMessage} />
+          </div>
         </div>
-      )}
-
-      {/* Input */}
-      <div className="border-t border-neutral-800 px-6 py-4">
-        <InputBar onSend={sendMessage} />
       </div>
     </div>
   );

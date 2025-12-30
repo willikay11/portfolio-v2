@@ -1,5 +1,5 @@
-import { Assistant } from "@/components/assistant/Assistant";
+import { IntroScreen } from "@/components/layout/IntroScreen";
 
-export default function Home() {
-  return <Assistant />;
+export default function Home({}) {
+  return <IntroScreen />
 }

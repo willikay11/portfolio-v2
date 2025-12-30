@@ -17,6 +17,7 @@ function createMessage(
   return {
     id: crypto.randomUUID(),
     role,
+    kind: "text",
     content,
   };
 }
@@ -37,7 +38,7 @@ function streamMessage(
       clearInterval(interval);
       onDone();
     }
-  }, 40); // adjust speed here
+  }, 100); // adjust speed here
 }
 
 export function useConversation() {
@@ -78,27 +79,45 @@ export function useConversation() {
         {
           id: assistantId,
           role: "assistant",
+          kind: "text",
           content: "",
         },
       ]);
 
-      streamMessage(
-        response.message,
-        (partial) => {
-          setMessages((msgs) =>
-            msgs.map((msg) =>
-              msg.id === assistantId
-                ? { ...msg, content: partial }
-                : msg
-            )
-          );
-        },
-        () => {
-          setSuggestions(response.suggestions ?? []);
-          setIsTyping(false);
-        }
-      );
+      // determine text to stream based on response shape
+      if (response.type === "projects") {
+        setMessages((msgs) => [
+          ...msgs,
+          {
+            id: crypto.randomUUID(),
+            role: "assistant",
+            kind: "projects",
+            projects: response.projects,
+          },
+        ]);
 
+        setSuggestions(response.suggestions ?? []);
+        setIsTyping(false);
+      }
+
+      if (response.type === "text") {
+        setIsTyping(false);
+        streamMessage(
+          response.message,
+          (partial) => {
+            setMessages((msgs) =>
+              msgs.map((msg) =>
+                msg.id === assistantId
+                  ? { ...msg, content: partial }
+                  : msg
+              )
+            );
+          },
+          () => {
+            setSuggestions(response.suggestions ?? []);
+          }
+        );
+      }
       return nextContext;
     });
   }, []);
@@ -121,6 +140,8 @@ export function useConversation() {
     goBack,
     reset,
     state: context.state,
+    context,
     isTyping,
+    dispatchEvent
   };
 }
