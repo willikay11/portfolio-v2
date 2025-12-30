@@ -38,7 +38,7 @@ function streamMessage(
       clearInterval(interval);
       onDone();
     }
-  }, 150); // adjust speed here
+  }, 100); // adjust speed here
 }
 
 export function useConversation() {
