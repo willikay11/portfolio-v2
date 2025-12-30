@@ -58,14 +58,6 @@ export function Assistant() {
     <div className="flex h-screen flex-col bg-neutral-950 text-white">
       <div className="grid grid-cols-12 gap-4">
         <div className="md:col-start-4 md:col-end-10 flex h-screen flex-col">
-          {/* Header */}
-          {/* <header className="border-b border-neutral-800 px-6 py-4">
-            <h1 className="text-lg font-semibold">
-              William Kamau — AI Portfolio
-            </h1>
-          </header> */}
-
-          {/* Messages */}
           <main ref={scrollRef} className="flex-1 overflow-y-auto px-6 py-4 space-y-4">
             {messages.map((msg) => (
               <MessageBubble key={msg.id} message={msg} />
@@ -76,7 +68,6 @@ export function Assistant() {
             <div ref={bottomRef} />
           </main>
 
-          {/* Suggestions */}
           {suggestions.length > 0 && (
             <div className="border-t border-neutral-800 px-6 py-3">
               <Suggestions
@@ -86,7 +77,6 @@ export function Assistant() {
             </div>
           )}
 
-          {/* Input */}
           <div className="border-neutral-800 px-6 py-4">
             <InputBar onSend={sendMessage} />
           </div>
