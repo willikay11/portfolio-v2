@@ -38,7 +38,7 @@ function streamMessage(
       clearInterval(interval);
       onDone();
     }
-  }, 40); // adjust speed here
+  }, 150); // adjust speed here
 }
 
 export function useConversation() {
@@ -67,11 +67,8 @@ export function useConversation() {
         payload: text,
       });
 
-      console.log("Transitioned to state:", nextContext);
       // 3. Derive assistant response from NEXT state
       const response = getResponse(nextContext);
-
-      console.log("Generated response:", response);
 
       // 4. Prepare assistant streaming
       setIsTyping(true);
@@ -104,6 +101,7 @@ export function useConversation() {
       }
 
       if (response.type === "text") {
+        setIsTyping(false);
         streamMessage(
           response.message,
           (partial) => {
@@ -117,7 +115,6 @@ export function useConversation() {
           },
           () => {
             setSuggestions(response.suggestions ?? []);
-            setIsTyping(false);
           }
         );
       }

@@ -55,7 +55,8 @@ export function ProjectsMessageBubble({
 
 export function MessageBubble({ message }: Props) {
   const isAssistant = message.role === "assistant";
-
+  console.log("Rendering message:", message);
+  
   if (message.kind === "projects") {
     return <motion.div
       initial={{
