@@ -14,6 +14,7 @@ export function Assistant() {
     suggestions,
     sendMessage,
     isTyping,
+    dispatchEvent
   } = useConversation();
   const searchParams = useSearchParams();
   const query = searchParams.get('query');
@@ -61,6 +62,7 @@ export function Assistant() {
     if (!query) return;
 
     if (query && query.trim().length > 0) {
+      dispatchEvent({ type: "START" })
       sendMessage(String(query));
     }
     // only run on initial mount / when searchParams changes

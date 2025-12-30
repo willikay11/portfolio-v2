@@ -1,11 +1,12 @@
 "use client";
 
+import { useRouter } from 'next/navigation';
 import { useConversation } from "@/hooks/useConversation";
 import { InputBar } from "../assistant/InputBar";
 
 export function IntroScreen() {
+  const router = useRouter();
   const {
-    dispatchEvent,
     sendMessage,
   } = useConversation();
 
@@ -31,7 +32,7 @@ export function IntroScreen() {
         {["Me", "Projects", "Skills", "Contact", "Resume"].map((label) => (
           <button
             key={label}
-            onClick={() => dispatchEvent({ type: "START" })}
+            onClick={() => router.push('/chat?query=' + encodeURIComponent(label))}
             className="rounded-xl border px-6 py-4"
           >
             {label}
