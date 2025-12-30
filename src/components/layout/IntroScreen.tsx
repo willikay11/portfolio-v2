@@ -1,14 +1,10 @@
 "use client";
 
 import { useRouter } from 'next/navigation';
-import { useConversation } from "@/hooks/useConversation";
 import { InputBar } from "../assistant/InputBar";
 
 export function IntroScreen() {
   const router = useRouter();
-  const {
-    sendMessage,
-  } = useConversation();
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center text-center">
@@ -25,7 +21,9 @@ export function IntroScreen() {
       </div>
 
       <div className="w-full max-w-xl">
-        <InputBar onSend={sendMessage} />
+        <InputBar onSend={(text: string) => {
+          router.push('/chat?query=' + encodeURIComponent(text));
+        }} />
       </div>
 
       <div className="flex gap-4 mt-8">
