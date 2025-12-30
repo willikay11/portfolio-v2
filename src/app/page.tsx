@@ -1,5 +1,5 @@
-import { AppClient } from "@/components/layout/AppClient";
+import { IntroScreen } from "@/components/layout/IntroScreen";
 
 export default function Home({}) {
-  return <AppClient />;
+  return <IntroScreen />
 }
