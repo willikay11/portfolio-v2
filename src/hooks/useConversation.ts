@@ -140,6 +140,8 @@ export function useConversation() {
     goBack,
     reset,
     state: context.state,
+    context,
     isTyping,
+    dispatchEvent
   };
 }

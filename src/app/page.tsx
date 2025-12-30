@@ -1,5 +1,5 @@
-import { Assistant } from "@/components/assistant/Assistant";
+import { AppClient } from "@/components/layout/AppClient";
 
-export default function Home() {
-  return <Assistant />;
+export default function Home({}) {
+  return <AppClient />;
 }
