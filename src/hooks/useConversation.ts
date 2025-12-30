@@ -100,6 +100,21 @@ export function useConversation() {
         setIsTyping(false);
       }
 
+      if (response.type === 'profile') {
+        setMessages((msgs) => [
+          ...msgs,
+          {
+            id: crypto.randomUUID(),
+            role: "assistant",
+            kind: "profile",
+            content: response.message,
+          },
+        ]);
+
+        setSuggestions(response.suggestions ?? []);
+        setIsTyping(false);
+      }
+
       if (response.type === "text") {
         setIsTyping(false);
         streamMessage(

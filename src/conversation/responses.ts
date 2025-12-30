@@ -4,6 +4,7 @@ import { ConversationContext, Project } from "@/types";
 
 export type AssistantResponse =
   | { type: "text"; message: string; suggestions?: string[] }
+  | { type: "profile"; message: string; suggestions?: string[] }
   | { type: "projects"; projects: Project[]; suggestions?: string[] };
 
 export function getResponse(
@@ -58,7 +59,7 @@ function greetingResponse(): AssistantResponse {
 
 function aboutResponse(): AssistantResponse {
   return {
-    type: "text",
+    type: "profile",
     message:
       "I’m a Lead Software Engineer who enjoys building scalable systems and leading teams.\n\n" +
       "I care deeply about clean architecture, performance, and developer experience.",
