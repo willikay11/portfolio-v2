@@ -6,6 +6,7 @@ import { Suggestions } from "./Suggestions";
 import { InputBar } from "./InputBar";
 import { TypingIndicator } from "./TypingIndicator";
 import { useEffect, useRef, useState } from "react";
+import { useSearchParams } from 'next/navigation';
 
 export function Assistant() {
   const {
@@ -14,7 +15,8 @@ export function Assistant() {
     sendMessage,
     isTyping,
   } = useConversation();
-
+  const searchParams = useSearchParams();
+  const query = searchParams.get('query');
   const bottomRef = useRef<HTMLDivElement | null>(null);
   const scrollRef = useRef<HTMLDivElement | null>(null);
 
@@ -53,6 +55,16 @@ export function Assistant() {
       });
     }
   }, [isTyping, messages, isUserAtBottom]);
+
+  // If a query param named `q` or `message` is provided, send it as the initial user message.
+  useEffect(() => {
+    if (!query) return;
+
+    if (query && query.trim().length > 0) {
+      sendMessage(String(query));
+    }
+    // only run on initial mount / when searchParams changes
+  }, [query, sendMessage]);
 
   return (
     <div className="flex h-screen flex-col bg-neutral-950 text-white">
