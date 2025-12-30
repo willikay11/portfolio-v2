@@ -27,7 +27,7 @@ export function IntroScreen() {
       </div>
 
       <div className="flex gap-4 mt-8">
-        {["Me", "Projects", "Skills", "Contact", "Resume"].map((label) => (
+        {["About", "Projects", "Skills", "Contact", "Resume"].map((label) => (
           <button
             key={label}
             onClick={() => router.push('/chat?query=' + encodeURIComponent(label))}
