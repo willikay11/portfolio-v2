@@ -92,8 +92,29 @@ function projectsResponse(): AssistantResponse {
         logoUrl: "/images/logos/tukai-white.svg",
         heroImageUrl: "/images/projects/tukai/hero.png",
         title: "Tukai",
-        description:
-          "Developed a high-performance e-commerce platform supporting thousands of daily users with seamless shopping experiences.",
+        description: "",
+        content: [
+          {
+            title: "Overview",
+            html: `
+              <p>
+                Tukai is a comprehensive experiences platform that allows users to discover, book, and review unique activities and adventures around the world. The platform offers a wide range of experiences, from guided tours and outdoor adventures to cultural workshops and culinary classes.
+              </p>
+            `,
+          },
+          {
+            title: "Architecture",
+          },
+          {
+            title: "UX & UI"
+          },
+          {
+            title: "Performance"
+          },
+          {
+            title: "Outcomes"
+          }
+        ],
         tags: ["React", "Node.js", "PostgreSQL"],
       },
       {
@@ -105,6 +126,23 @@ function projectsResponse(): AssistantResponse {
         description:
           "Developed a high-performance e-commerce platform supporting thousands of daily users with seamless shopping experiences.",
         tags: ["React", "Node.js", "PostgreSQL"],
+                content: [
+          {
+            title: "Overview",
+          },
+          {
+            title: "Architecture",
+          },
+          {
+            title: "UX & UI"
+          },
+          {
+            title: "Performance"
+          },
+          {
+            title: "Outcomes"
+          }
+        ],
       },
       // {
       //   id: "kyc-dashboard",

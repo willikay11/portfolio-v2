@@ -33,4 +33,9 @@ export type Project = {
   logoUrl?: string;
   heroImageUrl?: string;
   link?: string;
+  content?: {
+    title: string;
+    html?: string;
+  }[]
+
 };

@@ -6,6 +6,7 @@ import {
   DrawerContent,
 } from "@/components/ui/drawer"
 import { useState } from "react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Button } from "../ui/button";
 import {
   Carousel,
@@ -22,7 +23,9 @@ export function ProjectsMessageBubble({
   message: ProjectsMessage;
 }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [html, setHtml] = useState<string>("");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
   return (
     <div className="max-w-xl grid grid-cols-12 gap-4 cursor-pointer">
       {message.projects.map((project) => (
@@ -53,7 +56,7 @@ export function ProjectsMessageBubble({
           <div className="w-full h-screen overflow-auto">
             <div className="grid grid-cols-12 gap-4 h-full">
               <div className="col-start-3 col-span-8">
-                <div className="flex justify-between border-b border-neutral-800 p-4">
+                <div className="flex justify-between border-neutral-800 p-4 sticky top-0 bg-neutral-900 z-10">
                   <div className="inline-flex items-center gap-4">
                     <div className="rounded-full h-[48px] w-[48px] flex items-center justify-center" style={{ backgroundColor: selectedProject?.primaryColor }}>
                       <Image src={selectedProject?.logoUrl || ""} alt={`${selectedProject?.title} Logo`} width={16} height={16} />
@@ -61,7 +64,7 @@ export function ProjectsMessageBubble({
                     <p className="text-3xl text-white">{selectedProject?.title}</p>
                   </div>
                   <div>
-                    <Button>View</Button>
+                    <Button className="border-[1px] border-neutral-900 rounded-2xl bg-white text-black">View</Button>
                   </div>
                 </div>
 
@@ -82,8 +85,24 @@ export function ProjectsMessageBubble({
                         <CarouselPrevious className="absolute left-6" />
                         <CarouselNext className="absolute right-6" />
                       </Carousel>
-                  </div>
-                  <div className="col-start-2 col-span-10 py-6">
+
+                      <Tabs defaultValue="Overview" className="w-full">
+                        <TabsList>
+                          {selectedProject?.content?.map((contentItem, idx) => (
+                            <TabsTrigger key={idx} value={contentItem.title.toLowerCase()}>
+                              {contentItem.title}
+                            </TabsTrigger>
+                          ))}
+                        </TabsList>
+                        {selectedProject?.content?.map((contentItem, idx) => (
+                          <TabsContent key={idx} value={contentItem.title.toLowerCase()}>
+                            <div
+                              className="prose max-w-none mt-4 text-white"
+                              dangerouslySetInnerHTML={{ __html: contentItem.html || "" }}
+                            />
+                          </TabsContent>
+                        ))}
+                      </Tabs>
                   </div>
                 </div>
               </div>
