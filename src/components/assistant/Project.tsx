@@ -1,5 +1,15 @@
 import { ProjectsMessage } from "@/types";
-import { div } from "framer-motion/client";
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer"
+
 
 export function ProjectsMessageBubble({
   message,
@@ -26,6 +36,16 @@ export function ProjectsMessageBubble({
           </div>
         </div>
       ))}
+      <Drawer open={true}>
+        <DrawerContent>
+          <div className="mx-auto w-full max-w-sm">
+            <DrawerHeader>
+              <DrawerTitle>Move Goal</DrawerTitle>
+              <DrawerDescription>Set your daily activity goal.</DrawerDescription>
+            </DrawerHeader>
+          </div>
+        </DrawerContent>
+      </Drawer>
     </div>
   );
 }
