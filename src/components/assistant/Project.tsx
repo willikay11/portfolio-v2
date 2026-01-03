@@ -1,4 +1,5 @@
 import { ProjectsMessage } from "@/types";
+import { div } from "framer-motion/client";
 
 export function ProjectsMessageBubble({
   message,
@@ -6,37 +7,23 @@ export function ProjectsMessageBubble({
   message: ProjectsMessage;
 }) {
   return (
-    <div className="max-w-xl space-y-3">
+    <div className="max-w-xl grid grid-cols-12 gap-4 cursor-pointer">
       {message.projects.map((project) => (
         <div
           key={project.id}
-          className="rounded-xl border border-neutral-700 bg-neutral-900 p-4"
+          className={`relative col-span-6 min-h-[250px] rounded-xl  p-4 justify-between flex flex-col`}
+          style={{ backgroundColor: project.primaryColor, backgroundImage: project.heroImageUrl ? `url(${project.heroImageUrl})` : undefined, backgroundSize: 'cover', backgroundPosition: 'center' }}
         >
-          <h3 className="font-semibold text-white">{project.title}</h3>
-          <p className="text-sm text-neutral-300">
-            {project.description}
-          </p>
-
-          <div className="mt-2 flex flex-wrap gap-2">
-            {project.tags.map((tag) => (
-              <span
-                key={tag}
-                className="rounded-md bg-neutral-800 px-2 py-1 text-xs text-neutral-300"
-              >
-                {tag}
-              </span>
-            ))}
+          <div className="absolute p-2 rounded-b-xl bottom-0 left-0 right-0 flex justify-start g-neutral-300/20 hover:bg-neutral-300/30 dark:bg-neutral-400/20 dark:hover:bg-neutral-400/30 text-neutral-600 dark:text-neutral-300 backdrop-blur-[1px] border border-neutral-400/20">
+            <div className="inline-flex justify-center items-center gap-2">
+              {project.logoUrl && (
+                <div className="flex h-full items-center justify-center">
+                  <img src={project.logoUrl} alt={`${project.title} logo`} className="w-5 h-5" />
+                </div>
+              )}
+              <h3 className="font-semibold text-white">{project.title}</h3>
+            </div>
           </div>
-
-          {project.link && (
-            <a
-              href={project.link}
-              target="_blank"
-              className="mt-3 inline-block text-sm text-blue-400 hover:underline"
-            >
-              View project →
-            </a>
-          )}
         </div>
       ))}
     </div>

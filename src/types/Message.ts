@@ -29,5 +29,8 @@ export type Project = {
   title: string;
   description: string;
   tags: string[];
+  primaryColor?: string;
+  logoUrl?: string;
+  heroImageUrl?: string;
   link?: string;
 };

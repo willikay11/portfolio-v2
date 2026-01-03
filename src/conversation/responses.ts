@@ -77,20 +77,51 @@ function projectsResponse(): AssistantResponse {
     type: "projects",
     projects: [
       {
-        id: "fastfol",
-        title: "AI Portfolio (FastFol-inspired)",
+        id: "farm-app",
+        primaryColor: "#22c55e",     
+        logoUrl: "/images/logos/chai-mate-white.png",
+        title: "Farm Mate",
         description:
-          "An AI-driven portfolio experience with streaming responses.",
+          "This is a mobile app designed to help a farm owner/manager track operational expenses, harvest productivity, and receive short-term forecasts for both production (kgs picked) and expenses.",
         tags: ["Next.js", "AI", "UX"],
         link: "https://example.com",
       },
       {
-        id: "events",
-        title: "High-throughput Event System",
+        id: "experiences-platform",
+        primaryColor: "#047857",
+        logoUrl: "/images/logos/tukai-white.svg",
+        heroImageUrl: "/images/projects/tukai/hero.png",
+        title: "Tukai",
         description:
-          "Distributed event ingestion system processing millions/day.",
-        tags: ["Kafka", "Node.js", "Scaling"],
+          "Developed a high-performance e-commerce platform supporting thousands of daily users with seamless shopping experiences.",
+        tags: ["React", "Node.js", "PostgreSQL"],
       },
+      {
+        id: "ecommerce-platform",
+        primaryColor: "#EA580C",
+        logoUrl: "/images/logos/solgates-white.svg",
+        heroImageUrl: "/images/projects/solgates/hero.svg",
+        title: "Solgates",
+        description:
+          "Developed a high-performance e-commerce platform supporting thousands of daily users with seamless shopping experiences.",
+        tags: ["React", "Node.js", "PostgreSQL"],
+      },
+      // {
+      //   id: "kyc-dashboard",
+      //   primaryColor: "#3F51B5",
+      //   title: "KYC Verification App",
+      //   description:
+      //     "Built a dashboard providing real-time insights and visualizations for business metrics.",
+      //   tags: ["Vue.js", "D3.js", "WebSockets"],
+      // },
+      // {
+      //   id: "events",
+      //   primaryColor: "#009688",
+      //   title: "High-throughput Event System",
+      //   description:
+      //     "Distributed event ingestion system processing millions/day.",
+      //   tags: ["Kafka", "Node.js", "Scaling"],
+      // },
     ],
     suggestions: ["Dive into AI Portfolio", "Show architecture"],
   };
