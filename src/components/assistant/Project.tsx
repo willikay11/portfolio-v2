@@ -86,7 +86,7 @@ export function ProjectsMessageBubble({
                         <CarouselNext className="absolute right-6" />
                       </Carousel>
 
-                      <Tabs defaultValue="Overview" className="w-full">
+                      <Tabs defaultValue="overview" className="w-full">
                         <TabsList>
                           {selectedProject?.content?.map((contentItem, idx) => (
                             <TabsTrigger key={idx} value={contentItem.title.toLowerCase()}>
@@ -97,7 +97,7 @@ export function ProjectsMessageBubble({
                         {selectedProject?.content?.map((contentItem, idx) => (
                           <TabsContent key={idx} value={contentItem.title.toLowerCase()}>
                             <div
-                              className="prose max-w-none mt-4 text-white"
+                              className="prose max-w-none mt-4"
                               dangerouslySetInnerHTML={{ __html: contentItem.html || "" }}
                             />
                           </TabsContent>
