@@ -64,7 +64,7 @@ export function ProjectsMessageBubble({
                     <p className="text-3xl text-white">{selectedProject?.title}</p>
                   </div>
                   <div>
-                    <Button className="border-[1px] border-neutral-900 rounded-2xl bg-white text-black">View</Button>
+                    <Button className="border-[1px] border-neutral-900 rounded-2xl">View</Button>
                   </div>
                 </div>
 
