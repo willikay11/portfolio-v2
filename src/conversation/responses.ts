@@ -93,6 +93,7 @@ function projectsResponse(): AssistantResponse {
         heroImageUrl: "/images/projects/tukai/hero.png",
         title: "Tukai",
         description: "",
+        images: ["/images/projects/tukai/hero.png", "/images/projects/tukai/2.png", "/images/projects/tukai/3.png", "/images/projects/tukai/4.png", "/images/projects/tukai/5.png", "/images/projects/tukai/6.png"],
         content: [
           {
             title: "Overview",
@@ -123,6 +124,7 @@ function projectsResponse(): AssistantResponse {
         logoUrl: "/images/logos/solgates-white.svg",
         heroImageUrl: "/images/projects/solgates/hero.svg",
         title: "Solgates",
+        images: ["/images/projects/solgates/hero.svg"],
         description:
           "Developed a high-performance e-commerce platform supporting thousands of daily users with seamless shopping experiences.",
         tags: ["React", "Node.js", "PostgreSQL"],

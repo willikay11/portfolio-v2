@@ -37,5 +37,5 @@ export type Project = {
     title: string;
     html?: string;
   }[]
-
+  images?: string[];
 };

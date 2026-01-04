@@ -72,11 +72,11 @@ export function ProjectsMessageBubble({
                   <div className="col-span-12">
                       <Carousel className="w-full relative">
                         <CarouselContent>
-                          {Array.from({ length: 5 }).map((_, index) => (
+                          {selectedProject?.images?.map((imageUrl, index) => (
                             <CarouselItem key={index}>
                               <div className="p-1">
-                                <div className="rounded-lg min-h-[32rem] bg-white flex items-center justify-center">
-                                  <span className="text-4xl font-semibold">{index + 1}</span>
+                                <div className="rounded-lg min-h-[32rem] flex items-center justify-center" style={{ backgroundColor: selectedProject?.primaryColor}}>
+                                  <img src={imageUrl} alt={`${selectedProject?.title} image ${index + 1}`} className="max-w-[75%] max-h-[80%] rounded-md object-contain" />
                                 </div>
                               </div>
                             </CarouselItem>
