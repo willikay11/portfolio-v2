@@ -1,6 +1,6 @@
 export function TypingIndicator() {
   return (
-    <div className="max-w-xs rounded-xl bg-neutral-200 dark:bg-neutral-800 px-4 py-3">
+    <div className="max-w-xs px-4 py-3">
       <div className="flex items-center gap-1">
         <Dot delay={0} />
         <Dot delay={150} />
