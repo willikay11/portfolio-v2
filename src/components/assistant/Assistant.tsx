@@ -64,7 +64,7 @@ export function Assistant() {
   }, [query, sendMessage]);
 
   return (
-    <div className="flex h-screen flex-col bg-neutral-950 text-white">
+    <div className="flex h-screen flex-col bg-white dark:bg-neutral-950 text-neutral-900 dark:text-white">
       <div className="grid grid-cols-12 gap-4">
         <div className="md:col-start-4 md:col-end-10 flex h-screen flex-col">
           <main
@@ -81,12 +81,12 @@ export function Assistant() {
           </main>
 
           {suggestions.length > 0 && (
-            <div className="border-t border-neutral-800 px-6 py-3">
+            <div className="border-t border-neutral-200 dark:border-neutral-800 px-6 py-3">
               <Suggestions items={suggestions} onSelect={sendMessage} />
             </div>
           )}
 
-          <div className="border-neutral-800 px-6 py-4">
+          <div className="border-neutral-200 dark:border-neutral-800 px-6 py-4">
             <InputBar onSend={sendMessage} />
           </div>
         </div>
