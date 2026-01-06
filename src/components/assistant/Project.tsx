@@ -117,7 +117,9 @@ export function ProjectsMessageBubble({
                     </Carousel>
                   </div>
                   <div className="col-start-2 col-span-10 mb-4 mt-6">
-                    <p className="text-neutral-900 dark:text-white font-semibold text-2xl">TL;DR</p>
+                    <p className="text-neutral-900 dark:text-white font-semibold text-2xl">
+                      TL;DR
+                    </p>
                     <ul className="list-disc pl-6">
                       <li className="text-neutral-600 dark:text-neutral-400 italic mt-2">
                         Built and owned the frontend architecture for Tukai's
