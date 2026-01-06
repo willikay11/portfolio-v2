@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { InputBar } from "../assistant/InputBar";
 import { Button } from "../ui/button";
 import { Ri24HoursFill, RiBriefcaseLine, RiFileList3Line, RiMailLine, RiStackLine, RiUserSmileLine } from "@remixicon/react";
+import { motion } from "framer-motion";
 
 const skills = [
   {
@@ -38,21 +39,45 @@ export function IntroScreen() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center text-center">
-      <h1 className="text-4xl font-semibold">Hey, I’m William Kamau 👋</h1>
+      <motion.h1 
+        className="text-4xl font-semibold"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
+        Hey, I'm William Kamau 👋
+      </motion.h1>
 
-      <h2 className="text-7xl font-bold mt-4">FullStack Software Engineer</h2>
+      <motion.h2 
+        className="text-7xl font-bold mt-4"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
+      >
+        FullStack Software Engineer
+      </motion.h2>
 
       <div className="my-12">{/* avatar / illustration */}</div>
 
-      <div className="w-full max-w-xl">
+      <motion.div 
+        className="w-full max-w-xl"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
         <InputBar
           onSend={(text: string) => {
             router.push("/chat?query=" + encodeURIComponent(text));
           }}
         />
-      </div>
+      </motion.div>
 
-      <div className="flex gap-4 mt-8">
+      <motion.div 
+        className="flex gap-4 mt-8"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+      >
         {skills.map(({ label, icon, chat }) => (
           <Button
             key={label}
@@ -67,7 +92,7 @@ export function IntroScreen() {
             {label}
           </Button>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 }
