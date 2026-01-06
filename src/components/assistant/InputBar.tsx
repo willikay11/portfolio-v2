@@ -19,8 +19,8 @@ export function InputBar({ onSend }: Props) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex gap-3">
-      <div className="w-full inline-flex rounded-[10rem] bg-neutral-100 dark:bg-neutral-900 px-3 py-3 text-sm outline-none border border-neutral-300 dark:border-neutral-800 focus:border-blue-500">
+    <form onSubmit={handleSubmit} className="flex gap-3 justify-center">
+      <div className="w-96 focus-within:w-full inline-flex rounded-[10rem] bg-neutral-100 dark:bg-neutral-900 px-3 py-3 text-sm outline-none border border-neutral-300 dark:border-neutral-800 focus-within:border-blue-500 transition-all duration-300 ease-in-out">
         <input
           value={value}
           onChange={(e) => setValue(e.target.value)}
