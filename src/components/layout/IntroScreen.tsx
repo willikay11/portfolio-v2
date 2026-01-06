@@ -3,26 +3,32 @@
 import { useRouter } from "next/navigation";
 import { InputBar } from "../assistant/InputBar";
 import { Button } from "../ui/button";
+import { Ri24HoursFill, RiBriefcaseLine, RiFileList3Line, RiMailLine, RiStackLine, RiUserSmileLine } from "@remixicon/react";
 
 const skills = [
   {
     label: "About",
+    icon: <RiUserSmileLine size={24} />,
     chat: "Tell me about yourself",
   },
   {
     label: "Projects",
+    icon: <RiBriefcaseLine size={24} />,
     chat: "Show me your projects",
   },
   {
     label: "Skills",
+    icon: <RiStackLine size={24} />,
     chat: "What are your skills?",
   },
   {
     label: "Contact",
+    icon: <RiMailLine size={24} />,
     chat: "How can I contact you?",
   },
   {
     label: "Resume",
+    icon: <RiFileList3Line size={24} />,
     chat: "Show me your resume",
   },
 ];
@@ -47,7 +53,7 @@ export function IntroScreen() {
       </div>
 
       <div className="flex gap-4 mt-8">
-        {skills.map(({ label, chat }) => (
+        {skills.map(({ label, icon, chat }) => (
           <Button
             key={label}
             onClick={() =>
@@ -55,8 +61,9 @@ export function IntroScreen() {
             }
             variant="outline"
             size="lg"
-            className="rounded-xl"
+            className="rounded-xl h-20 min-w-[120px] flex flex-col justify-center items-center px-6"
           >
+            <div>{icon}</div>
             {label}
           </Button>
         ))}
