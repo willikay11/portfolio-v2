@@ -64,7 +64,7 @@ export function ProjectsMessageBubble({
           <div className="w-full h-screen overflow-auto">
             <div className="grid grid-cols-12 gap-4 h-full">
               <div className="col-start-3 col-span-8">
-                <div className="flex justify-between border-neutral-800 p-4 sticky top-0 bg-neutral-900 z-10">
+                <div className="flex justify-between border-neutral-200 dark:border-neutral-800 p-4 sticky top-0 bg-white dark:bg-neutral-900 z-10">
                   <div className="inline-flex items-center gap-4">
                     <div
                       className="rounded-full h-[48px] w-[48px] flex items-center justify-center"
@@ -77,7 +77,7 @@ export function ProjectsMessageBubble({
                         height={16}
                       />
                     </div>
-                    <p className="text-3xl text-white">
+                    <p className="text-3xl text-neutral-900 dark:text-white">
                       {selectedProject?.title}
                     </p>
                   </div>
@@ -88,7 +88,7 @@ export function ProjectsMessageBubble({
                   </div>
                 </div>
 
-                <div className="grid grid-cols-12 gap-2 h-full mt-6">
+                <div className="grid grid-cols-12 mt-6">
                   <div className="col-span-12">
                     <Carousel className="w-full relative">
                       <CarouselContent>
@@ -116,25 +116,25 @@ export function ProjectsMessageBubble({
                       <CarouselNext className="absolute right-6" />
                     </Carousel>
                   </div>
-                  <div className="col-start-2 col-span-10 mb-4">
-                    <p className="text-white font-semibold text-2xl">TL;DR</p>
+                  <div className="col-start-2 col-span-10 mb-4 mt-6">
+                    <p className="text-neutral-900 dark:text-white font-semibold text-2xl">TL;DR</p>
                     <ul className="list-disc pl-6">
-                      <li className="text-neutral-400 italic mt-2">
+                      <li className="text-neutral-600 dark:text-neutral-400 italic mt-2">
                         Built and owned the frontend architecture for Tukai's
                         web experience, a mobile-first platform for discovering
                         unique places, activities, and communities.
                       </li>
-                      <li className="text-neutral-400 italic mt-2">
+                      <li className="text-neutral-600 dark:text-neutral-400 italic mt-2">
                         Designed a high-performance, SEO-friendly discovery
                         surface that serves as the primary top-of-funnel into
                         the native mobile app.
                       </li>
-                      <li className="text-neutral-400 italic mt-2">
+                      <li className="text-neutral-600 dark:text-neutral-400 italic mt-2">
                         Focused on frontend performance, scalability, and
                         maintainability, balancing SSR, client-side
                         interactivity, and rapid iteration.
                       </li>
-                      <li className="text-neutral-400 italic mt-2">
+                      <li className="text-neutral-600 dark:text-neutral-400 italic mt-2">
                         Delivered a clean, intuitive UI that enables fast
                         discovery and improves conversion into deeper product
                         engagement.
@@ -176,7 +176,7 @@ export function ProjectsMessageBubble({
                         </TabsTrigger>
                       </TabsList>
                       <TabsContent key="overview" value="overview">
-                        <div className="prose text-neutral-400 italic max-w-none mt-4">
+                        <div className="prose text-neutral-600 dark:text-neutral-400 italic max-w-none mt-4">
                           <p>
                             Tukai is a travel and experiences platform designed
                             to help users discover unique places, activities,
@@ -197,7 +197,7 @@ export function ProjectsMessageBubble({
                         key="problemStatement"
                         value="problemStatement"
                       >
-                        <div className="prose text-neutral-400 italic max-w-none mt-4">
+                        <div className="prose text-neutral-600 dark:text-neutral-400 italic max-w-none mt-4">
                           <p>
                             The frontend needed to solve several non‑trivial
                             challenges:
@@ -236,7 +236,7 @@ export function ProjectsMessageBubble({
                         </div>
                       </TabsContent>
                       <TabsContent key="myRole" value="myRole">
-                        <div className="prose text-neutral-400 italic max-w-none mt-4">
+                        <div className="prose text-neutral-600 dark:text-neutral-400 italic max-w-none mt-4">
                           <p>
                             I owned the frontend architecture and implementation
                             of Tukai's web experience, including:
@@ -266,8 +266,8 @@ export function ProjectsMessageBubble({
                         key="frontendArchitecture"
                         value="frontendArchitecture"
                       >
-                        <div className="prose text-neutral-400 italic max-w-none mt-4">
-                          <h3 className="text-white font-semibold text-lg">
+                        <div className="prose text-neutral-600 dark:text-neutral-400 italic max-w-none mt-4">
+                          <h3 className="text-neutral-900 dark:text-white font-semibold text-lg">
                             Framework & Rendering Strategy
                           </h3>
                           <ul className="list-disc pl-6 mt-2">
@@ -339,7 +339,7 @@ export function ProjectsMessageBubble({
                         </div>
                       </TabsContent>
                       <TabsContent key="performance" value="performance">
-                        <div className="prose text-neutral-400 italic max-w-none mt-4">
+                        <div className="prose text-neutral-600 dark:text-neutral-400 italic max-w-none mt-4">
                           <p>
                             Performance was treated as a first-class concern
                             throughout development.
@@ -407,7 +407,7 @@ export function ProjectsMessageBubble({
                         </div>
                       </TabsContent>
                       <TabsContent key="outcomes" value="outcomes">
-                        <div className="prose text-neutral-400 italic max-w-none mt-4">
+                        <div className="prose text-neutral-600 dark:text-neutral-400 italic max-w-none mt-4">
                           <p>
                             The frontend successfully delivered on its core
                             product goals:
@@ -447,7 +447,7 @@ export function ProjectsMessageBubble({
                         key="whatIWouldImproveNext"
                         value="whatIWouldImproveNext"
                       >
-                        <div className="prose text-neutral-400 italic max-w-none mt-4">
+                        <div className="prose text-neutral-600 dark:text-neutral-400 italic max-w-none mt-4">
                           <p>
                             With more time or a larger user base, the next
                             frontend improvements would include:
