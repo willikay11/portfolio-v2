@@ -3,6 +3,23 @@
 import { useRouter } from 'next/navigation';
 import { InputBar } from "../assistant/InputBar";
 
+const skills = [{
+  label: "About",
+  chat: "Tell me about yourself"
+}, {
+  label: "Projects",
+  chat: "Show me your projects"
+}, {
+  label: "Skills",
+  chat: "What are your skills?"
+}, {
+  label: "Contact",
+  chat: "How can I contact you?"
+}, {
+  label: "Resume",
+  chat: "Show me your resume"
+}];
+
 export function IntroScreen() {
   const router = useRouter();
 
@@ -13,7 +30,7 @@ export function IntroScreen() {
       </h1>
 
       <h2 className="text-7xl font-bold mt-4">
-        Lead Software Engineer
+        FullStack Software Engineer
       </h2>
 
       <div className="my-12">
@@ -27,11 +44,11 @@ export function IntroScreen() {
       </div>
 
       <div className="flex gap-4 mt-8">
-        {["About", "Projects", "Skills", "Contact", "Resume"].map((label) => (
+        {skills.map(({ label, chat }) => (
           <button
             key={label}
-            onClick={() => router.push('/chat?query=' + encodeURIComponent(label))}
-            className="rounded-xl border px-6 py-4"
+            onClick={() => router.push('/chat?query=' + encodeURIComponent(chat))}
+            className="rounded-xl border px-6 py-4 cursor-pointer hover:bg-neutral-800 transition"
           >
             {label}
           </button>
