@@ -52,6 +52,7 @@ export function useConversation() {
 
     // 2. Advance conversation state
     setContext((prev) => {
+      console.log("Current context before USER_MESSAGE:", prev);
       const nextContext = transition(prev, {
         type: "USER_MESSAGE",
         payload: text,
@@ -76,50 +77,56 @@ export function useConversation() {
 
       // determine text to stream based on response shape
       if (response.type === "projects") {
-        setMessages((msgs) => [
-          ...msgs,
-          {
-            id: crypto.randomUUID(),
-            role: "assistant",
-            kind: "projects",
-            projects: response.projects,
-          },
-        ]);
+        setTimeout(() => {
+          setMessages((msgs) => [
+            ...msgs,
+            {
+              id: crypto.randomUUID(),
+              role: "assistant",
+              kind: "projects",
+              projects: response.projects,
+            },
+          ]);
 
-        setSuggestions(response.suggestions ?? []);
-        setIsTyping(false);
+          setSuggestions(response.suggestions ?? []);
+          setIsTyping(false);
+        }, 3000); // Show typing indicator for 3 seconds
       }
 
       if (response.type === "profile") {
-        setMessages((msgs) => [
-          ...msgs,
-          {
-            id: crypto.randomUUID(),
-            role: "assistant",
-            kind: "profile",
-            content: response.message,
-          },
-        ]);
+        setTimeout(() => {
+          setMessages((msgs) => [
+            ...msgs,
+            {
+              id: crypto.randomUUID(),
+              role: "assistant",
+              kind: "profile",
+              content: response.message,
+            },
+          ]);
 
-        setSuggestions(response.suggestions ?? []);
-        setIsTyping(false);
+          setSuggestions(response.suggestions ?? []);
+          setIsTyping(false);
+        }, 3000); // Show typing indicator for 3 seconds
       }
 
       if (response.type === "text") {
-        setIsTyping(false);
-        streamMessage(
-          response.message,
-          (partial) => {
-            setMessages((msgs) =>
-              msgs.map((msg) =>
-                msg.id === assistantId ? { ...msg, content: partial } : msg
-              )
-            );
-          },
-          () => {
-            setSuggestions(response.suggestions ?? []);
-          }
-        );
+        setTimeout(() => {
+          setIsTyping(false);
+          streamMessage(
+            response.message,
+            (partial) => {
+              setMessages((msgs) =>
+                msgs.map((msg) =>
+                  msg.id === assistantId ? { ...msg, content: partial } : msg
+                )
+              );
+            },
+            () => {
+              setSuggestions(response.suggestions ?? []);
+            }
+          );
+        }, 3000); // Show typing indicator for 3 seconds
       }
       return nextContext;
     });

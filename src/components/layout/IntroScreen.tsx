@@ -3,7 +3,14 @@
 import { useRouter } from "next/navigation";
 import { InputBar } from "../assistant/InputBar";
 import { Button } from "../ui/button";
-import { Ri24HoursFill, RiBriefcaseLine, RiFileList3Line, RiMailLine, RiStackLine, RiUserSmileLine } from "@remixicon/react";
+import {
+  Ri24HoursFill,
+  RiBriefcaseLine,
+  RiFileList3Line,
+  RiMailLine,
+  RiStackLine,
+  RiUserSmileLine,
+} from "@remixicon/react";
 import { motion } from "framer-motion";
 
 const skills = [
@@ -39,7 +46,7 @@ export function IntroScreen() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center text-center">
-      <motion.h1 
+      <motion.h1
         className="text-4xl font-semibold"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
@@ -48,7 +55,7 @@ export function IntroScreen() {
         Hey, I'm William Kamau 👋
       </motion.h1>
 
-      <motion.h2 
+      <motion.h2
         className="text-7xl font-bold mt-4"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
@@ -59,7 +66,7 @@ export function IntroScreen() {
 
       <div className="my-12">{/* avatar / illustration */}</div>
 
-      <motion.div 
+      <motion.div
         className="w-full max-w-xl"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
@@ -72,7 +79,7 @@ export function IntroScreen() {
         />
       </motion.div>
 
-      <motion.div 
+      <motion.div
         className="flex gap-4 mt-8"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
