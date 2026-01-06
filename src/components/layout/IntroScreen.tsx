@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { InputBar } from "../assistant/InputBar";
+import { Button } from "../ui/button";
 
 const skills = [
   {
@@ -47,15 +48,17 @@ export function IntroScreen() {
 
       <div className="flex gap-4 mt-8">
         {skills.map(({ label, chat }) => (
-          <button
+          <Button
             key={label}
             onClick={() =>
               router.push("/chat?query=" + encodeURIComponent(chat))
             }
-            className="rounded-xl border px-6 py-4 cursor-pointer hover:bg-neutral-800 transition"
+            variant="outline"
+            size="lg"
+            className="rounded-xl"
           >
             {label}
-          </button>
+          </Button>
         ))}
       </div>
     </div>
