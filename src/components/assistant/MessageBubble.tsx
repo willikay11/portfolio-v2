@@ -1,5 +1,4 @@
-
-'use client';
+"use client";
 import type { Message } from "@/types/Message";
 import clsx from "clsx";
 import { motion } from "framer-motion";
@@ -12,27 +11,29 @@ type Props = {
 
 export function MessageBubble({ message }: Props) {
   const isAssistant = message.role === "assistant";
-  console.log('Rendering message:', message);
+  console.log("Rendering message:", message);
 
   if (message.kind === "projects") {
-    return <motion.div
-      initial={{
-        opacity: 0,
-        y: 12,
-        x: isAssistant ? 0 : 20,
-      }}
-      animate={{
-        opacity: 1,
-        y: 0,
-        x: 0,
-      }}
-      transition={{
-        duration: 0.25,
-        ease: "easeOut",
-      }}
-    >
-      <ProjectsMessageBubble message={message} />
-    </motion.div>;
+    return (
+      <motion.div
+        initial={{
+          opacity: 0,
+          y: 12,
+          x: isAssistant ? 0 : 20,
+        }}
+        animate={{
+          opacity: 1,
+          y: 0,
+          x: 0,
+        }}
+        transition={{
+          duration: 0.25,
+          ease: "easeOut",
+        }}
+      >
+        <ProjectsMessageBubble message={message} />
+      </motion.div>
+    );
   }
 
   if (message.kind === "profile") {
@@ -58,7 +59,7 @@ export function MessageBubble({ message }: Props) {
     );
   }
 
-  if (message.content !== undefined && message.content !== '') {
+  if (message.content !== undefined && message.content !== "") {
     return (
       <motion.div
         initial={{

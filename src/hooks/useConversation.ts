@@ -1,19 +1,13 @@
 // src/hooks/useConversation.ts
 
 import { useCallback, useEffect, useState } from "react";
-import {
-  transition,
-  initialContext,
-} from "@/conversation";
+import { transition, initialContext } from "@/conversation";
 import { getResponse } from "@/conversation/responses";
 import { ConversationEvent } from "@/conversation/events";
 import { ConversationContext } from "@/types";
 import type { Message } from "../types/Message";
 
-function createMessage(
-  role: "user" | "assistant",
-  content: string
-): Message {
+function createMessage(role: "user" | "assistant", content: string): Message {
   return {
     id: crypto.randomUUID(),
     role,
@@ -43,8 +37,7 @@ function streamMessage(
 
 export function useConversation() {
   const [isTyping, setIsTyping] = useState(false);
-  const [context, setContext] =
-    useState<ConversationContext>(initialContext);
+  const [context, setContext] = useState<ConversationContext>(initialContext);
 
   const [messages, setMessages] = useState<Message[]>([]);
   const [suggestions, setSuggestions] = useState<string[]>([]);
@@ -55,10 +48,7 @@ export function useConversation() {
 
   const sendMessage = useCallback((text: string) => {
     // 1. User message (sync, always first)
-    setMessages((msgs) => [
-      ...msgs,
-      createMessage("user", text),
-    ]);
+    setMessages((msgs) => [...msgs, createMessage("user", text)]);
 
     // 2. Advance conversation state
     setContext((prev) => {
@@ -100,7 +90,7 @@ export function useConversation() {
         setIsTyping(false);
       }
 
-      if (response.type === 'profile') {
+      if (response.type === "profile") {
         setMessages((msgs) => [
           ...msgs,
           {
@@ -122,9 +112,7 @@ export function useConversation() {
           (partial) => {
             setMessages((msgs) =>
               msgs.map((msg) =>
-                msg.id === assistantId
-                  ? { ...msg, content: partial }
-                  : msg
+                msg.id === assistantId ? { ...msg, content: partial } : msg
               )
             );
           },
@@ -137,12 +125,9 @@ export function useConversation() {
     });
   }, []);
 
+  const goBack = () => setContext((prev) => transition(prev, { type: "BACK" }));
 
-  const goBack = () =>
-    setContext((prev) => transition(prev, { type: "BACK" }));
-
-  const reset = () =>
-    setContext((prev) => transition(prev, { type: "RESET" }));
+  const reset = () => setContext((prev) => transition(prev, { type: "RESET" }));
 
   useEffect(() => {
     setContext((prev) => transition(prev, { type: "START" }));
@@ -157,6 +142,6 @@ export function useConversation() {
     state: context.state,
     context,
     isTyping,
-    dispatchEvent
+    dispatchEvent,
   };
 }

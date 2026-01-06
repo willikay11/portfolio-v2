@@ -6,23 +6,18 @@ import { Suggestions } from "./Suggestions";
 import { InputBar } from "./InputBar";
 import { TypingIndicator } from "./TypingIndicator";
 import { useEffect, useRef, useState } from "react";
-import { useSearchParams } from 'next/navigation';
+import { useSearchParams } from "next/navigation";
 
 export function Assistant() {
-  const {
-    messages,
-    suggestions,
-    sendMessage,
-    isTyping,
-    dispatchEvent
-  } = useConversation();
+  const { messages, suggestions, sendMessage, isTyping, dispatchEvent } =
+    useConversation();
   const searchParams = useSearchParams();
-  const query = searchParams.get('query');
+  const query = searchParams.get("query");
   const bottomRef = useRef<HTMLDivElement | null>(null);
   const scrollRef = useRef<HTMLDivElement | null>(null);
 
   const [isUserAtBottom, setIsUserAtBottom] = useState(true);
-  
+
   useEffect(() => {
     if (isTyping) {
       bottomRef.current?.scrollIntoView({
@@ -62,7 +57,7 @@ export function Assistant() {
     if (!query) return;
 
     if (query && query.trim().length > 0) {
-      dispatchEvent({ type: "START" })
+      dispatchEvent({ type: "START" });
       sendMessage(String(query));
     }
     // only run on initial mount / when searchParams changes
@@ -72,8 +67,10 @@ export function Assistant() {
     <div className="flex h-screen flex-col bg-neutral-950 text-white">
       <div className="grid grid-cols-12 gap-4">
         <div className="md:col-start-4 md:col-end-10 flex h-screen flex-col">
-
-          <main ref={scrollRef} className="flex-1 overflow-y-auto px-6 py-4 space-y-4">
+          <main
+            ref={scrollRef}
+            className="flex-1 overflow-y-auto px-6 py-4 space-y-4"
+          >
             {messages.map((msg) => (
               <MessageBubble key={msg.id} message={msg} />
             ))}
@@ -85,10 +82,7 @@ export function Assistant() {
 
           {suggestions.length > 0 && (
             <div className="border-t border-neutral-800 px-6 py-3">
-              <Suggestions
-                items={suggestions}
-                onSelect={sendMessage}
-              />
+              <Suggestions items={suggestions} onSelect={sendMessage} />
             </div>
           )}
 

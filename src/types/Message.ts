@@ -1,8 +1,4 @@
-export type Message =
-  | TextMessage
-  | ProfileMessage
-  | ProjectsMessage;
-
+export type Message = TextMessage | ProfileMessage | ProjectsMessage;
 
 export type BaseMessage = {
   id: string;
@@ -36,6 +32,6 @@ export type Project = {
   content?: {
     title: string;
     html?: string;
-  }[]
+  }[];
   images?: string[];
 };

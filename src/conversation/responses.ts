@@ -7,9 +7,7 @@ export type AssistantResponse =
   | { type: "profile"; message: string; suggestions?: string[] }
   | { type: "projects"; projects: Project[]; suggestions?: string[] };
 
-export function getResponse(
-  context: ConversationContext
-): AssistantResponse {
+export function getResponse(context: ConversationContext): AssistantResponse {
   switch (context.state) {
     case "GREETING":
       return greetingResponse();
@@ -71,14 +69,13 @@ function aboutResponse(): AssistantResponse {
   };
 }
 
-
 function projectsResponse(): AssistantResponse {
   return {
     type: "projects",
     projects: [
       {
         id: "farm-app",
-        primaryColor: "#22c55e",     
+        primaryColor: "#22c55e",
         logoUrl: "/images/logos/chai-mate-white.png",
         title: "Farm Mate",
         description:
@@ -93,7 +90,14 @@ function projectsResponse(): AssistantResponse {
         heroImageUrl: "/images/projects/tukai/hero.png",
         title: "Tukai",
         description: "",
-        images: ["/images/projects/tukai/hero.png", "/images/projects/tukai/2.png", "/images/projects/tukai/3.png", "/images/projects/tukai/4.png", "/images/projects/tukai/5.png", "/images/projects/tukai/6.png"],
+        images: [
+          "/images/projects/tukai/hero.png",
+          "/images/projects/tukai/2.png",
+          "/images/projects/tukai/3.png",
+          "/images/projects/tukai/4.png",
+          "/images/projects/tukai/5.png",
+          "/images/projects/tukai/6.png",
+        ],
         content: [
           {
             title: "Overview",
@@ -107,14 +111,14 @@ function projectsResponse(): AssistantResponse {
             title: "Architecture",
           },
           {
-            title: "UX & UI"
+            title: "UX & UI",
           },
           {
-            title: "Performance"
+            title: "Performance",
           },
           {
-            title: "Outcomes"
-          }
+            title: "Outcomes",
+          },
         ],
         tags: ["React", "Node.js", "PostgreSQL"],
       },
@@ -128,7 +132,7 @@ function projectsResponse(): AssistantResponse {
         description:
           "Developed a high-performance e-commerce platform supporting thousands of daily users with seamless shopping experiences.",
         tags: ["React", "Node.js", "PostgreSQL"],
-                content: [
+        content: [
           {
             title: "Overview",
           },
@@ -136,14 +140,14 @@ function projectsResponse(): AssistantResponse {
             title: "Architecture",
           },
           {
-            title: "UX & UI"
+            title: "UX & UI",
           },
           {
-            title: "Performance"
+            title: "Performance",
           },
           {
-            title: "Outcomes"
-          }
+            title: "Outcomes",
+          },
         ],
       },
       // {
@@ -207,13 +211,9 @@ function experienceResponse(): AssistantResponse {
     message:
       "I’ve led teams, mentored engineers, and built systems used at scale.\n\n" +
       "My focus is aligning technical decisions with business impact.",
-    suggestions: [
-      "What kind of teams have you led?",
-      "Can I see your resume?",
-    ],
+    suggestions: ["What kind of teams have you led?", "Can I see your resume?"],
   };
 }
-
 
 function resumeResponse(): AssistantResponse {
   return {
@@ -221,10 +221,7 @@ function resumeResponse(): AssistantResponse {
     message:
       "You can download my resume below or connect with me directly.\n\n" +
       "I’m always happy to talk about interesting problems.",
-    suggestions: [
-      "How can I contact you?",
-      "Show me your projects",
-    ],
+    suggestions: ["How can I contact you?", "Show me your projects"],
   };
 }
 
@@ -234,10 +231,7 @@ function contactResponse(): AssistantResponse {
     message:
       "The best way to reach me is via email or LinkedIn.\n\n" +
       "Looking forward to connecting 👋",
-    suggestions: [
-      "View your LinkedIn",
-      "Email you",
-    ],
+    suggestions: ["View your LinkedIn", "Email you"],
   };
 }
 
@@ -247,10 +241,7 @@ function funResponse(): AssistantResponse {
     message:
       "Outside of work, I enjoy breaking things (intentionally), learning new systems, and refining my craft.\n\n" +
       "I believe great engineers stay curious.",
-    suggestions: [
-      "Back to your work",
-      "Tell me about your projects",
-    ],
+    suggestions: ["Back to your work", "Tell me about your projects"],
   };
 }
 
@@ -259,9 +250,6 @@ function fallbackResponse(): AssistantResponse {
     type: "text",
     message:
       "I can tell you about my projects, skills, or experience.\nWhat would you like to explore?",
-    suggestions: [
-      "Tell me about you",
-      "What projects have you built?",
-    ],
+    suggestions: ["Tell me about you", "What projects have you built?"],
   };
 }
