@@ -23,15 +23,11 @@ export type ProjectsMessage = BaseMessage & {
 export type Project = {
   id: string;
   title: string;
-  description: string;
   tags: string[];
   primaryColor?: string;
   logoUrl?: string;
   heroImageUrl?: string;
   link?: string;
-  content?: {
-    title: string;
-    html?: string;
-  }[];
+  descriptionComponent?: React.ComponentType;
   images?: string[];
 };

@@ -1,5 +1,7 @@
 // conversation/responses.ts
 
+import { SolgatesDescription } from "@/components/assistant/projectDescription/solgates";
+import { TukaiDescription } from "@/components/assistant/projectDescription/tukai";
 import { ConversationContext, Project } from "@/types";
 
 export type AssistantResponse =
@@ -78,18 +80,15 @@ function projectsResponse(): AssistantResponse {
         primaryColor: "#22c55e",
         logoUrl: "/images/logos/chai-mate-white.png",
         title: "Farm Mate",
-        description:
-          "This is a mobile app designed to help a farm owner/manager track operational expenses, harvest productivity, and receive short-term forecasts for both production (kgs picked) and expenses.",
         tags: ["Next.js", "AI", "UX"],
         link: "https://example.com",
       },
       {
         id: "experiences-platform",
         primaryColor: "#047857",
-        logoUrl: "/images/logos/tukai-white.svg",
+        logoUrl: "/images/logos/tukai-green.svg",
         heroImageUrl: "/images/projects/tukai/hero.png",
         title: "Tukai",
-        description: "",
         images: [
           "/images/projects/tukai/hero.png",
           "/images/projects/tukai/2.png",
@@ -98,57 +97,18 @@ function projectsResponse(): AssistantResponse {
           "/images/projects/tukai/5.png",
           "/images/projects/tukai/6.png",
         ],
-        content: [
-          {
-            title: "Overview",
-            html: `
-              <p>
-                Tukai is a comprehensive experiences platform that allows users to discover, book, and review unique activities and adventures around the world. The platform offers a wide range of experiences, from guided tours and outdoor adventures to cultural workshops and culinary classes.
-              </p>
-            `,
-          },
-          {
-            title: "Architecture",
-          },
-          {
-            title: "UX & UI",
-          },
-          {
-            title: "Performance",
-          },
-          {
-            title: "Outcomes",
-          },
-        ],
+        descriptionComponent: TukaiDescription,
         tags: ["React", "Node.js", "PostgreSQL"],
       },
       {
         id: "ecommerce-platform",
         primaryColor: "#EA580C",
         logoUrl: "/images/logos/solgates-white.svg",
-        heroImageUrl: "/images/projects/solgates/hero.svg",
+        heroImageUrl: "/images/projects/solgates/hero.png",
         title: "Solgates",
-        images: ["/images/projects/solgates/hero.svg"],
-        description:
-          "Developed a high-performance e-commerce platform supporting thousands of daily users with seamless shopping experiences.",
+        images: ["/images/projects/solgates/hero.png", "/images/projects/solgates/1.png", "/images/projects/solgates/2.png", "/images/projects/solgates/3.png"],
+        descriptionComponent: SolgatesDescription,
         tags: ["React", "Node.js", "PostgreSQL"],
-        content: [
-          {
-            title: "Overview",
-          },
-          {
-            title: "Architecture",
-          },
-          {
-            title: "UX & UI",
-          },
-          {
-            title: "Performance",
-          },
-          {
-            title: "Outcomes",
-          },
-        ],
       },
       // {
       //   id: "kyc-dashboard",
