@@ -26,7 +26,7 @@ export function ProjectsMessageBubble({
       {message.projects.map((project) => (
         <div
           key={project.id}
-          className={`relative col-span-6 min-h-[250px] rounded-xl p-4 justify-between flex flex-col`}
+          className={`relative col-span-6 min-h-[250px] rounded-xl p-4 justify-between flex flex-col border border-neutral-400/20`}
           style={{
             backgroundColor: project.primaryColor,
             backgroundImage: project.heroImageUrl
@@ -40,14 +40,23 @@ export function ProjectsMessageBubble({
             setIsOpen(true);
           }}
         >
-          <div className="absolute p-2 rounded-xl top-0 bottom-0 left-0 right-0 flex justify-start g-neutral-300/60 hover:bg-neutral-300/30 dark:bg-neutral-400/20 dark:hover:bg-neutral-400/30 text-neutral-600 dark:text-neutral-300 backdrop-blur-[1px] border border-neutral-400/20">
+          <div className="absolute p-2 rounded-b-xl bottom-0 left-0 right-0 flex justify-start bg-neutral-300/60 hover:bg-neutral-300/30 dark:bg-neutral-400/20 dark:hover:bg-neutral-400/30 text-neutral-600 dark:text-neutral-300 backdrop-blur-[3px]">
             <div className="inline-flex justify-center items-center gap-2 w-full">
               {project.logoUrl && (
                 <div className="flex h-full items-center justify-center">
-                  <img
-                    src={project.logoUrl}
-                    alt={`${project.title} logo`}
-                    className="w-5 h-5"
+                  <div
+                    className="w-8 h-8"
+                    style={{
+                      backgroundColor: project.primaryColor,
+                      WebkitMaskImage: `url(${project.logoUrl})`,
+                      maskImage: `url(${project.logoUrl})`,
+                      WebkitMaskSize: 'contain',
+                      maskSize: 'contain',
+                      WebkitMaskRepeat: 'no-repeat',
+                      maskRepeat: 'no-repeat',
+                      WebkitMaskPosition: 'center',
+                      maskPosition: 'center'
+                    }}
                   />
                 </div>
               )}

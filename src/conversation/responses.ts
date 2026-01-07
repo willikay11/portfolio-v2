@@ -86,7 +86,7 @@ function projectsResponse(): AssistantResponse {
       {
         id: "experiences-platform",
         primaryColor: "#047857",
-        logoUrl: "/images/logos/tukai-white.svg",
+        logoUrl: "/images/logos/tukai-green.svg",
         heroImageUrl: "/images/projects/tukai/hero.png",
         title: "Tukai",
         images: [
