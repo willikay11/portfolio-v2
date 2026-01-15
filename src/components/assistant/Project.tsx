@@ -3,15 +3,6 @@
 import { Project, ProjectsMessage } from "@/types";
 import { Drawer, DrawerContent } from "@/components/ui/drawer";
 import { useState } from "react";
-import { Button } from "../ui/button";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import Image from "next/image";
 
 export function ProjectsMessageBubble({
   message,
@@ -26,110 +17,84 @@ export function ProjectsMessageBubble({
       {message.projects.map((project) => (
         <div
           key={project.id}
-          className={`relative col-span-6 min-h-[250px] rounded-xl p-4 justify-between flex flex-col border border-neutral-400/20`}
+          className="group relative col-span-6 min-h-[250px] rounded-xl overflow-hidden border border-white/10 cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:shadow-black/50"
           style={{
             backgroundColor: project.primaryColor,
-            backgroundImage: project.heroImageUrl
-              ? `url(${project.heroImageUrl})`
-              : undefined,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
           }}
           onClick={() => {
             setSelectedProject(project);
             setIsOpen(true);
           }}
         >
-          <div className="absolute p-2 rounded-b-xl bottom-0 left-0 right-0 flex justify-start bg-neutral-300/60 hover:bg-neutral-300/30 dark:bg-neutral-400/20 dark:hover:bg-neutral-400/30 text-neutral-600 dark:text-neutral-300 backdrop-blur-[3px]">
-            <div className="inline-flex justify-center items-center gap-2 w-full">
-              {project.logoUrl && (
-                <div className="flex h-full items-center justify-center">
-                  <div
-                    className="w-8 h-8"
-                    style={{
-                      backgroundColor: project.primaryColor,
-                      WebkitMaskImage: `url(${project.logoUrl})`,
-                      maskImage: `url(${project.logoUrl})`,
-                      WebkitMaskSize: 'contain',
-                      maskSize: 'contain',
-                      WebkitMaskRepeat: 'no-repeat',
-                      maskRepeat: 'no-repeat',
-                      WebkitMaskPosition: 'center',
-                      maskPosition: 'center'
-                    }}
-                  />
+          {/* Background Image */}
+          {project.heroImageUrl && (
+            <div
+              className="absolute inset-0 transition-transform duration-300 group-hover:scale-105"
+              style={{
+                backgroundImage: `url(${project.heroImageUrl})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            />
+          )}
+
+          {/* Dark Gradient Overlay for better text contrast */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+
+          {/* Content Container */}
+          <div className="relative h-full flex flex-col justify-end p-4">
+            {/* Title and Logo at bottom */}
+            <div className="flex flex-col gap-3">
+              <div className="flex items-center gap-3">
+                {project.logoUrl && (
+                  <div className="flex-shrink-0 h-12 w-12 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center p-2 shadow-lg">
+                    <div
+                      className="w-full h-full"
+                      style={{
+                        backgroundColor: "white",
+                        WebkitMaskImage: `url(${project.logoUrl})`,
+                        maskImage: `url(${project.logoUrl})`,
+                        WebkitMaskSize: "contain",
+                        maskSize: "contain",
+                        WebkitMaskRepeat: "no-repeat",
+                        maskRepeat: "no-repeat",
+                        WebkitMaskPosition: "center",
+                        maskPosition: "center",
+                      }}
+                    />
+                  </div>
+                )}
+                <div className="flex-1">
+                  <h3 className="font-bold text-white text-2xl drop-shadow-lg">
+                    {project.title}
+                  </h3>
                 </div>
-              )}
-              <h3 className="font-semibold text-white text-2xl" style={{ color: project.primaryColor}}>{project.title}</h3>
+              </div>
             </div>
           </div>
+
+          {/* Hover Overlay Effect */}
+          <div className="absolute inset-0 bg-white/0 group-hover:bg-white/5 transition-colors duration-300 pointer-events-none" />
         </div>
       ))}
 
       <Drawer open={isOpen} onOpenChange={setIsOpen}>
-        <DrawerContent>
-          <div className="w-full h-screen overflow-auto">
+        <DrawerContent
+          style={{
+            background: selectedProject?.primaryColor
+              ? `linear-gradient(to bottom right, ${selectedProject.primaryColor}, color-mix(in srgb, ${selectedProject.primaryColor} 70%, black))`
+              : undefined,
+          }}
+        >
+          <div className="w-full h-screen overflow-auto bg-transparent mt-12 mb-6">
             <div className="grid grid-cols-12 gap-4 h-full">
               <div className="col-start-3 col-span-8">
-                <div className="flex justify-between border-neutral-200 dark:border-neutral-800 pt-4 pb-2 sticky top-0 bg-white dark:bg-neutral-900 z-10">
-                  <div className="inline-flex items-center gap-4">
-                    <div
-                      className="rounded-full h-[48px] w-[48px] flex items-center justify-center"
-                      style={{ backgroundColor: selectedProject?.primaryColor }}
-                    >
-                      <Image
-                        src={selectedProject?.logoUrl || ""}
-                        alt={`${selectedProject?.title} Logo`}
-                        width={16}
-                        height={16}
-                      />
-                    </div>
-                    <p className="text-3xl text-neutral-900 dark:text-white">
-                      {selectedProject?.title}
-                    </p>
-                  </div>
-                  <div>
-                    <Button className="border-[1px] border-neutral-900 rounded-2xl">
-                      View
-                    </Button>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-12 mt-6">
-                  <div className="col-span-12">
-                    <Carousel className="w-full relative">
-                      <CarouselContent>
-                        {selectedProject?.images?.map((imageUrl, index) => (
-                          <CarouselItem key={index}>
-                            <div className="p-1">
-                              <div
-                                className="rounded-lg min-h-[32rem] flex items-center justify-center"
-                                style={{
-                                  backgroundColor:
-                                    selectedProject?.primaryColor,
-                                }}
-                              >
-                                <img
-                                  src={imageUrl}
-                                  alt={`${selectedProject?.title} image ${index + 1}`}
-                                  className="max-w-[75%] max-h-[80%] rounded-md object-contain"
-                                />
-                              </div>
-                            </div>
-                          </CarouselItem>
-                        ))}
-                      </CarouselContent>
-                      <CarouselPrevious className="absolute left-6" />
-                      <CarouselNext className="absolute right-6" />
-                    </Carousel>
-                  </div>
-                  <div className="col-start-2 col-span-10 mb-4 mt-6">
-                    {selectedProject?.descriptionComponent ? (
-                      <selectedProject.descriptionComponent />
-                    ) : (
-                      <div>No description available.</div>
-                    )}
-                  </div>
+                <div className="relative rounded-3xl overflow-hidden backdrop-blur-md bg-white/10 border border-white/20 shadow-2xl p-4">
+                  {selectedProject?.descriptionComponent ? (
+                    <selectedProject.descriptionComponent />
+                  ) : (
+                    <div>No description available.</div>
+                  )}
                 </div>
               </div>
             </div>
