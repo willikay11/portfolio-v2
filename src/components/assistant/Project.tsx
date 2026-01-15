@@ -17,48 +17,64 @@ export function ProjectsMessageBubble({
       {message.projects.map((project) => (
         <div
           key={project.id}
-          className={`relative col-span-6 min-h-[250px] rounded-xl p-4 justify-between flex flex-col border border-neutral-400/20`}
+          className="group relative col-span-6 min-h-[250px] rounded-xl overflow-hidden border border-white/10 cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:shadow-black/50"
           style={{
             backgroundColor: project.primaryColor,
-            backgroundImage: project.heroImageUrl
-              ? `url(${project.heroImageUrl})`
-              : undefined,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
           }}
           onClick={() => {
             setSelectedProject(project);
             setIsOpen(true);
           }}
         >
-          <div className="absolute p-2 rounded-b-xl bottom-0 left-0 right-0 flex justify-start bg-neutral-300/60 hover:bg-neutral-300/30 dark:bg-neutral-400/20 dark:hover:bg-neutral-400/30 text-neutral-600 dark:text-neutral-300 backdrop-blur-[3px]">
-            <div className="inline-flex justify-center items-center gap-2 w-full">
-              {project.logoUrl && (
-                <div className="flex h-full items-center justify-center">
-                  <div
-                    className="w-8 h-8"
-                    style={{
-                      backgroundColor: project.primaryColor,
-                      WebkitMaskImage: `url(${project.logoUrl})`,
-                      maskImage: `url(${project.logoUrl})`,
-                      WebkitMaskSize: "contain",
-                      maskSize: "contain",
-                      WebkitMaskRepeat: "no-repeat",
-                      maskRepeat: "no-repeat",
-                      WebkitMaskPosition: "center",
-                      maskPosition: "center",
-                    }}
-                  />
+          {/* Background Image */}
+          {project.heroImageUrl && (
+            <div
+              className="absolute inset-0 transition-transform duration-300 group-hover:scale-105"
+              style={{
+                backgroundImage: `url(${project.heroImageUrl})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            />
+          )}
+          
+          {/* Dark Gradient Overlay for better text contrast */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+          
+          {/* Content Container */}
+          <div className="relative h-full flex flex-col justify-end p-4">            
+            {/* Title and Logo at bottom */}
+            <div className="flex flex-col gap-3">
+              <div className="flex items-center gap-3">
+                {project.logoUrl && (
+                  <div className="flex-shrink-0 h-12 w-12 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center p-2 shadow-lg">
+                    <div
+                      className="w-full h-full"
+                      style={{
+                        backgroundColor: "white",
+                        WebkitMaskImage: `url(${project.logoUrl})`,
+                        maskImage: `url(${project.logoUrl})`,
+                        WebkitMaskSize: "contain",
+                        maskSize: "contain",
+                        WebkitMaskRepeat: "no-repeat",
+                        maskRepeat: "no-repeat",
+                        WebkitMaskPosition: "center",
+                        maskPosition: "center",
+                      }}
+                    />
+                  </div>
+                )}
+                <div className="flex-1">
+                  <h3 className="font-bold text-white text-2xl drop-shadow-lg">
+                    {project.title}
+                  </h3>
                 </div>
-              )}
-              <h3
-                className="font-semibold text-white text-2xl"
-                style={{ color: project.primaryColor }}
-              >
-                {project.title}
-              </h3>
+              </div>
             </div>
           </div>
+          
+          {/* Hover Overlay Effect */}
+          <div className="absolute inset-0 bg-white/0 group-hover:bg-white/5 transition-colors duration-300 pointer-events-none" />
         </div>
       ))}
 
