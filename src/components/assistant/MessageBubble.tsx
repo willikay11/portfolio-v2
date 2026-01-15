@@ -94,14 +94,24 @@ export function MessageBubble({ message }: Props) {
               remarkPlugins={[remarkGfm]}
               rehypePlugins={[rehypeHighlight]}
               components={{
-                p: ({ children }) => <p className="mb-2 last:mb-0 leading-relaxed">{children}</p>,
-                ul: ({ children }) => <ul className="my-2 space-y-1 list-disc pl-4">{children}</ul>,
-                ol: ({ children }) => <ol className="my-2 space-y-1 list-decimal pl-4">{children}</ol>,
-                li: ({ children }) => <li className="leading-relaxed">{children}</li>,
+                p: ({ children }) => (
+                  <p className="mb-2 last:mb-0 leading-relaxed">{children}</p>
+                ),
+                ul: ({ children }) => (
+                  <ul className="my-2 space-y-1 list-disc pl-4">{children}</ul>
+                ),
+                ol: ({ children }) => (
+                  <ol className="my-2 space-y-1 list-decimal pl-4">
+                    {children}
+                  </ol>
+                ),
+                li: ({ children }) => (
+                  <li className="leading-relaxed">{children}</li>
+                ),
                 a: ({ children, href }) => (
-                  <a 
-                    href={href} 
-                    target="_blank" 
+                  <a
+                    href={href}
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="underline hover:opacity-80 transition-opacity"
                   >
@@ -111,7 +121,9 @@ export function MessageBubble({ message }: Props) {
                 code: ({ className, children }) => {
                   const isInline = !className;
                   if (isInline) {
-                    return <code className="font-mono text-sm">{children}</code>;
+                    return (
+                      <code className="font-mono text-sm">{children}</code>
+                    );
                   }
                   return <code className={className}>{children}</code>;
                 },

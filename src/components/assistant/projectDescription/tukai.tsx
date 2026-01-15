@@ -30,17 +30,16 @@ export function TukaiDescription({ primaryColor }: { primaryColor?: string }) {
         <ul className="list-disc pl-6 space-y-2">
           <li className="text-white italic">
             Built and owned the frontend architecture for Tukai's web
-            experience, a mobile-first platform for discovering unique
-            places, activities, and communities.
+            experience, a mobile-first platform for discovering unique places,
+            activities, and communities.
           </li>
           <li className="text-white italic">
             Designed a high-performance, SEO-friendly discovery surface that
             serves as the primary top-of-funnel into the native mobile app.
           </li>
           <li className="text-white italic">
-            Focused on frontend performance, scalability, and
-            maintainability, balancing SSR, client-side interactivity, and
-            rapid iteration.
+            Focused on frontend performance, scalability, and maintainability,
+            balancing SSR, client-side interactivity, and rapid iteration.
           </li>
           <li className="text-white italic">
             Delivered a clean, intuitive UI that enables fast discovery and

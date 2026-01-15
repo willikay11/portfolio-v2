@@ -37,12 +37,12 @@ export function ProjectsMessageBubble({
               }}
             />
           )}
-          
+
           {/* Dark Gradient Overlay for better text contrast */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-          
+
           {/* Content Container */}
-          <div className="relative h-full flex flex-col justify-end p-4">            
+          <div className="relative h-full flex flex-col justify-end p-4">
             {/* Title and Logo at bottom */}
             <div className="flex flex-col gap-3">
               <div className="flex items-center gap-3">
@@ -72,7 +72,7 @@ export function ProjectsMessageBubble({
               </div>
             </div>
           </div>
-          
+
           {/* Hover Overlay Effect */}
           <div className="absolute inset-0 bg-white/0 group-hover:bg-white/5 transition-colors duration-300 pointer-events-none" />
         </div>
