@@ -106,7 +106,12 @@ function projectsResponse(): AssistantResponse {
         logoUrl: "/images/logos/solgates-white.svg",
         heroImageUrl: "/images/projects/solgates/hero.png",
         title: "Solgates",
-        images: ["/images/projects/solgates/hero.png", "/images/projects/solgates/1.png", "/images/projects/solgates/2.png", "/images/projects/solgates/3.png"],
+        images: [
+          "/images/projects/solgates/hero.png",
+          "/images/projects/solgates/1.png",
+          "/images/projects/solgates/2.png",
+          "/images/projects/solgates/3.png",
+        ],
         descriptionComponent: SolgatesDescription,
         tags: ["React", "Node.js", "PostgreSQL"],
       },
