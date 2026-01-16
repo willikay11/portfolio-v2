@@ -8,7 +8,8 @@ export type AssistantResponse =
   | { type: "text"; message: string; suggestions?: string[] }
   | { type: "profile"; message: string; suggestions?: string[] }
   | { type: "projects"; projects: Project[]; suggestions?: string[] }
-  | { type: "contact"; message: string; suggestions?: string[] };
+  | { type: "contact"; message: string; suggestions?: string[] }
+  | { type: "skills"; message: string; suggestions?: string[] };
 
 export function getResponse(context: ConversationContext): AssistantResponse {
   switch (context.state) {
@@ -158,14 +159,11 @@ function projectDetailResponse(
 
 function skillsResponse(): AssistantResponse {
   return {
-    type: "text",
+    type: "skills",
     message:
-      "My strongest skills span across the stack:\n\n" +
-      "• Frontend: React, Next.js, TypeScript\n" +
-      "• Backend: Node.js, GraphQL, PostgreSQL\n" +
-      "• Infra: AWS, Docker, CI/CD\n",
+      "Here's an overview of the technologies and skills I work with across different domains.",
     suggestions: [
-      "How do you approach system design?",
+      "Show me your projects",
       "Tell me about your experience",
     ],
   };
