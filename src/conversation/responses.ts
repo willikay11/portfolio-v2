@@ -53,8 +53,10 @@ function greetingResponse(): AssistantResponse {
       "You can explore my work, skills, or experience — just ask.",
     suggestions: [
       "Tell me about you",
-      "What projects have you built?",
-      "What are your strongest skills?",
+      "Show me your projects",
+      "What are your skills?",
+      "How can I contact you?",
+      "View your resume",
     ],
   };
 }
@@ -67,8 +69,9 @@ function aboutResponse(): AssistantResponse {
       "I care deeply about clean architecture, performance, and developer experience.",
     suggestions: [
       "Show me your projects",
-      "What tech do you work with?",
-      "Tell me about your experience",
+      "What are your skills?",
+      "How can I contact you?",
+      "View your resume",
     ],
   };
 }
@@ -134,7 +137,12 @@ function projectsResponse(): AssistantResponse {
       //   tags: ["Kafka", "Node.js", "Scaling"],
       // },
     ],
-    suggestions: ["Dive into AI Portfolio", "Show architecture"],
+    suggestions: [
+      "Tell me about you",
+      "What are your skills?",
+      "How can I contact you?",
+      "View your resume",
+    ],
   };
 }
 
@@ -150,9 +158,11 @@ function projectDetailResponse(
       "I focused on scalability, clean boundaries, and long-term maintainability.\n\n" +
       "The biggest win was simplifying complexity without sacrificing performance.",
     suggestions: [
-      "What challenges did you face?",
-      "What tech did you use?",
-      "Show me another project",
+      "Tell me about you",
+      "Show me your projects",
+      "What are your skills?",
+      "How can I contact you?",
+      "View your resume",
     ],
   };
 }
@@ -163,8 +173,10 @@ function skillsResponse(): AssistantResponse {
     message:
       "Here's an overview of the technologies and skills I work with across different domains.",
     suggestions: [
+      "Tell me about you",
       "Show me your projects",
-      "Tell me about your experience",
+      "How can I contact you?",
+      "View your resume",
     ],
   };
 }
@@ -175,7 +187,13 @@ function experienceResponse(): AssistantResponse {
     message:
       "I’ve led teams, mentored engineers, and built systems used at scale.\n\n" +
       "My focus is aligning technical decisions with business impact.",
-    suggestions: ["What kind of teams have you led?", "Can I see your resume?"],
+    suggestions: [
+      "Tell me about you",
+      "Show me your projects",
+      "What are your skills?",
+      "How can I contact you?",
+      "View your resume",
+    ],
   };
 }
 
@@ -185,7 +203,12 @@ function resumeResponse(): AssistantResponse {
     message:
       "You can download my resume below or connect with me directly.\n\n" +
       "I’m always happy to talk about interesting problems.",
-    suggestions: ["How can I contact you?", "Show me your projects"],
+    suggestions: [
+      "Tell me about you",
+      "Show me your projects",
+      "What are your skills?",
+      "How can I contact you?",
+    ],
   };
 }
 
@@ -195,7 +218,12 @@ function contactResponse(): AssistantResponse {
     message:
       "The best way to reach me is via email or LinkedIn.\n\n" +
       "Looking forward to connecting 👋",
-    suggestions: ["Show me your projects", "Tell me about your experience"],
+    suggestions: [
+      "Tell me about you",
+      "Show me your projects",
+      "What are your skills?",
+      "View your resume",
+    ],
   };
 }
 
@@ -205,7 +233,13 @@ function funResponse(): AssistantResponse {
     message:
       "Outside of work, I enjoy breaking things (intentionally), learning new systems, and refining my craft.\n\n" +
       "I believe great engineers stay curious.",
-    suggestions: ["Back to your work", "Tell me about your projects"],
+    suggestions: [
+      "Tell me about you",
+      "Show me your projects",
+      "What are your skills?",
+      "How can I contact you?",
+      "View your resume",
+    ],
   };
 }
 
@@ -214,6 +248,12 @@ function fallbackResponse(): AssistantResponse {
     type: "text",
     message:
       "I can tell you about my projects, skills, or experience.\nWhat would you like to explore?",
-    suggestions: ["Tell me about you", "What projects have you built?"],
+    suggestions: [
+      "Tell me about you",
+      "Show me your projects",
+      "What are your skills?",
+      "How can I contact you?",
+      "View your resume",
+    ],
   };
 }

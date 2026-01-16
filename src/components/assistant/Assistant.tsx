@@ -28,6 +28,15 @@ export function Assistant() {
   }, [isTyping]);
 
   useEffect(() => {
+    if (isUserAtBottom) {
+      bottomRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "end",
+      });
+    }
+  }, [messages, isUserAtBottom]);
+
+  useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
 
@@ -42,15 +51,6 @@ export function Assistant() {
     el.addEventListener("scroll", handleScroll);
     return () => el.removeEventListener("scroll", handleScroll);
   }, []);
-
-  useEffect(() => {
-    if (isTyping && isUserAtBottom) {
-      bottomRef.current?.scrollIntoView({
-        behavior: "smooth",
-        block: "end",
-      });
-    }
-  }, [isTyping, messages, isUserAtBottom]);
 
   // If a query param named `q` or `message` is provided, send it as the initial user message.
   useEffect(() => {
