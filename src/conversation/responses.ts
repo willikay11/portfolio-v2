@@ -7,7 +7,8 @@ import { ConversationContext, Project } from "@/types";
 export type AssistantResponse =
   | { type: "text"; message: string; suggestions?: string[] }
   | { type: "profile"; message: string; suggestions?: string[] }
-  | { type: "projects"; projects: Project[]; suggestions?: string[] };
+  | { type: "projects"; projects: Project[]; suggestions?: string[] }
+  | { type: "contact"; message: string; suggestions?: string[] };
 
 export function getResponse(context: ConversationContext): AssistantResponse {
   switch (context.state) {
@@ -192,11 +193,11 @@ function resumeResponse(): AssistantResponse {
 
 function contactResponse(): AssistantResponse {
   return {
-    type: "text",
+    type: "contact",
     message:
       "The best way to reach me is via email or LinkedIn.\n\n" +
       "Looking forward to connecting 👋",
-    suggestions: ["View your LinkedIn", "Email you"],
+    suggestions: ["Show me your projects", "Tell me about your experience"],
   };
 }
 

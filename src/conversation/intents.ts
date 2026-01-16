@@ -18,7 +18,14 @@ export function resolveIntent(input: string): Intent {
   if (text.includes("skill")) return "SKILLS";
   if (text.includes("experience")) return "EXPERIENCE";
   if (text.includes("resume") || text.includes("cv")) return "RESUME";
-  if (text.includes("contact") || text.includes("email")) return "CONTACT";
+  if (
+    text.includes("contact") ||
+    text.includes("email") ||
+    text.includes("reach") ||
+    text.includes("get in touch") ||
+    text.includes("connect")
+  )
+    return "CONTACT";
   if (text.includes("fun")) return "FUN";
   if (text.includes("you") || text.includes("about")) return "ABOUT";
 
