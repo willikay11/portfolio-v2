@@ -110,6 +110,23 @@ export function useConversation() {
         }, 3000); // Show typing indicator for 3 seconds
       }
 
+      if (response.type === "contact") {
+        setTimeout(() => {
+          setMessages((msgs) => [
+            ...msgs,
+            {
+              id: crypto.randomUUID(),
+              role: "assistant",
+              kind: "contact",
+              content: response.message,
+            },
+          ]);
+
+          setSuggestions(response.suggestions ?? []);
+          setIsTyping(false);
+        }, 3000); // Show typing indicator for 3 seconds
+      }
+
       if (response.type === "text") {
         setTimeout(() => {
           setIsTyping(false);

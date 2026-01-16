@@ -4,6 +4,7 @@ import clsx from "clsx";
 import { motion } from "framer-motion";
 import { ProjectsMessageBubble } from "./Project";
 import { Profile } from "./Profile";
+import { Contact } from "./Contact";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeHighlight from "rehype-highlight";
@@ -54,6 +55,27 @@ export function MessageBubble({ message }: Props) {
         }}
       >
         <Profile />
+      </motion.div>
+    );
+  }
+
+  if (message.kind === "contact") {
+    return (
+      <motion.div
+        initial={{
+          opacity: 0,
+          y: 50,
+        }}
+        animate={{
+          opacity: 1,
+          y: 0,
+        }}
+        transition={{
+          duration: 0.4,
+          ease: "easeOut",
+        }}
+      >
+        <Contact />
       </motion.div>
     );
   }
