@@ -9,7 +9,7 @@ export function TukaiDescription({ primaryColor }: { primaryColor?: string }) {
       <div className="flex items-start gap-3 sm:gap-6 mb-6 sm:mb-8">
         <div className="h-16 w-16 sm:h-20 sm:w-20 rounded-full items-center justify-center flex bg-[#11823B] flex-shrink-0">
           <Image
-            src="/images/logos/tukai.svg"
+            src="/images/logos/tukai-white.svg"
             alt={`Tukai Logo`}
             width={36}
             height={36}
