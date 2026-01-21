@@ -2,6 +2,7 @@
 
 import { SolgatesDescription } from "@/components/assistant/projectDescription/solgates";
 import { TukaiDescription } from "@/components/assistant/projectDescription/tukai";
+import { PortfolioDescription } from "@/components/assistant/projectDescription/portfolio";
 import { ConversationContext, Project } from "@/types";
 
 export type AssistantResponse =
@@ -81,12 +82,13 @@ function projectsResponse(): AssistantResponse {
     type: "projects",
     projects: [
       {
-        id: "farm-app",
-        primaryColor: "#22c55e",
-        logoUrl: "/images/logos/chai-mate-white.png",
-        title: "Farm Mate",
-        tags: ["Next.js", "AI", "UX"],
-        link: "https://example.com",
+        id: "portfolio",
+        primaryColor: "#6366f1",
+        logoUrl: "/images/logos/portfolio.svg",
+        heroImageUrl: "/images/projects/portfolio/hero.png",
+        title: "Interactive Portfolio",
+        descriptionComponent: PortfolioDescription,
+        tags: ["Next.js", "TypeScript", "Tailwind CSS"],
       },
       {
         id: "experiences-platform",
@@ -120,22 +122,6 @@ function projectsResponse(): AssistantResponse {
         descriptionComponent: SolgatesDescription,
         tags: ["React", "Node.js", "PostgreSQL"],
       },
-      // {
-      //   id: "kyc-dashboard",
-      //   primaryColor: "#3F51B5",
-      //   title: "KYC Verification App",
-      //   description:
-      //     "Built a dashboard providing real-time insights and visualizations for business metrics.",
-      //   tags: ["Vue.js", "D3.js", "WebSockets"],
-      // },
-      // {
-      //   id: "events",
-      //   primaryColor: "#009688",
-      //   title: "High-throughput Event System",
-      //   description:
-      //     "Distributed event ingestion system processing millions/day.",
-      //   tags: ["Kafka", "Node.js", "Scaling"],
-      // },
     ],
     suggestions: [
       "Tell me about you",
