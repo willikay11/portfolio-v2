@@ -13,11 +13,11 @@ export function ProjectsMessageBubble({
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   return (
-    <div className="max-w-xl grid grid-cols-12 gap-4 cursor-pointer">
+    <div className="w-full max-w-4xl grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 cursor-pointer">
       {message.projects.map((project) => (
         <div
           key={project.id}
-          className="group relative col-span-6 min-h-[250px] rounded-xl overflow-hidden border border-white/10 cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:shadow-black/50"
+          className="group relative min-h-[200px] sm:min-h-[250px] rounded-xl overflow-hidden border border-white/10 cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:shadow-black/50"
           style={{
             backgroundColor: project.primaryColor,
           }}
@@ -42,12 +42,12 @@ export function ProjectsMessageBubble({
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
 
           {/* Content Container */}
-          <div className="relative h-full flex flex-col justify-end p-4">
+          <div className="relative h-full flex flex-col justify-end p-3 sm:p-4">
             {/* Title and Logo at bottom */}
-            <div className="flex flex-col gap-3">
-              <div className="flex items-center gap-3">
+            <div className="flex flex-col gap-2 sm:gap-3">
+              <div className="flex items-center gap-2 sm:gap-3">
                 {project.logoUrl && (
-                  <div className="flex-shrink-0 h-12 w-12 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center p-2 shadow-lg">
+                  <div className="flex-shrink-0 h-10 w-10 sm:h-12 sm:w-12 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center p-2 shadow-lg">
                     <div
                       className="w-full h-full"
                       style={{
@@ -65,7 +65,7 @@ export function ProjectsMessageBubble({
                   </div>
                 )}
                 <div className="flex-1">
-                  <h3 className="font-bold text-white text-2xl drop-shadow-lg">
+                  <h3 className="font-bold text-white text-xl sm:text-2xl drop-shadow-lg">
                     {project.title}
                   </h3>
                 </div>
@@ -86,16 +86,14 @@ export function ProjectsMessageBubble({
               : undefined,
           }}
         >
-          <div className="w-full h-screen overflow-auto bg-transparent mt-12 mb-6">
-            <div className="grid grid-cols-12 gap-4 h-full">
-              <div className="col-start-3 col-span-8">
-                <div className="relative rounded-3xl overflow-hidden backdrop-blur-md bg-white/10 border border-white/20 shadow-2xl p-4">
-                  {selectedProject?.descriptionComponent ? (
-                    <selectedProject.descriptionComponent />
-                  ) : (
-                    <div>No description available.</div>
-                  )}
-                </div>
+          <div className="w-full h-screen overflow-auto bg-transparent mt-6 sm:mt-12 mb-4 sm:mb-6 px-4 sm:px-0">
+            <div className="w-full max-w-6xl mx-auto">
+              <div className="relative rounded-3xl overflow-hidden backdrop-blur-md bg-white/10 border border-white/20 shadow-2xl p-4 sm:p-6">
+                {selectedProject?.descriptionComponent ? (
+                  <selectedProject.descriptionComponent />
+                ) : (
+                  <div>No description available.</div>
+                )}
               </div>
             </div>
           </div>

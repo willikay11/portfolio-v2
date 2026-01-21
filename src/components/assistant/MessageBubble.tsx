@@ -120,7 +120,7 @@ export function MessageBubble({ message }: Props) {
       >
         <div
           className={clsx(
-            "max-w-2xl rounded-2xl px-5 py-4 shadow-lg",
+            "w-full max-w-2xl rounded-2xl px-4 sm:px-5 py-3 sm:py-4 shadow-lg",
             isAssistant
               ? "bg-neutral-800/90 backdrop-blur-sm text-neutral-100 border border-neutral-700/50"
               : "ml-auto bg-blue-600 text-white border border-blue-500/50"
@@ -139,13 +139,13 @@ export function MessageBubble({ message }: Props) {
               rehypePlugins={[rehypeHighlight]}
               components={{
                 p: ({ children }) => (
-                  <p className="mb-2 last:mb-0 leading-relaxed">{children}</p>
+                  <p className="mb-2 last:mb-0 leading-relaxed text-sm sm:text-base">{children}</p>
                 ),
                 ul: ({ children }) => (
-                  <ul className="my-2 space-y-1 list-disc pl-4">{children}</ul>
+                  <ul className="my-2 space-y-1 list-disc pl-4 text-sm sm:text-base">{children}</ul>
                 ),
                 ol: ({ children }) => (
-                  <ol className="my-2 space-y-1 list-decimal pl-4">
+                  <ol className="my-2 space-y-1 list-decimal pl-4 text-sm sm:text-base">
                     {children}
                   </ol>
                 ),
@@ -157,7 +157,7 @@ export function MessageBubble({ message }: Props) {
                     href={href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="underline hover:opacity-80 transition-opacity"
+                    className="underline hover:opacity-80 transition-opacity break-words"
                   >
                     {children}
                   </a>
@@ -166,13 +166,13 @@ export function MessageBubble({ message }: Props) {
                   const isInline = !className;
                   if (isInline) {
                     return (
-                      <code className="font-mono text-sm">{children}</code>
+                      <code className="font-mono text-xs sm:text-sm">{children}</code>
                     );
                   }
                   return <code className={className}>{children}</code>;
                 },
                 pre: ({ children }) => (
-                  <pre className="overflow-x-auto rounded-lg p-4 my-3">
+                  <pre className="overflow-x-auto rounded-lg p-3 sm:p-4 my-3 text-xs sm:text-sm">
                     {children}
                   </pre>
                 ),
