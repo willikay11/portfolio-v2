@@ -14,9 +14,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "William Kamau — Lead Software Engineer",
-  description: "An interactive portfolio experience",
+  title: "William Kamau — Full Stack Software Engineer",
+  description: "Explore my interactive portfolio featuring conversational AI-powered navigation. Discover my projects, skills, and experience through an engaging, mobile-first interface built with modern web technologies.",
   viewport: "width=device-width, initial-scale=1, maximum-scale=5",
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({

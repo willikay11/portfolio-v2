@@ -10,7 +10,8 @@ export type AssistantResponse =
   | { type: "profile"; message: string; suggestions?: string[] }
   | { type: "projects"; projects: Project[]; suggestions?: string[] }
   | { type: "contact"; message: string; suggestions?: string[] }
-  | { type: "skills"; message: string; suggestions?: string[] };
+  | { type: "skills"; message: string; suggestions?: string[] }
+  | { type: "resume"; message: string; suggestions?: string[] };
 
 export function getResponse(context: ConversationContext): AssistantResponse {
   switch (context.state) {
@@ -50,7 +51,7 @@ function greetingResponse(): AssistantResponse {
   return {
     type: "text",
     message:
-      "Hey 👋 I’m William, a Lead Software Engineer.\n\n" +
+      "Hey 👋 I’m William, a Full Stack Software Engineer.\n\n" +
       "You can explore my work, skills, or experience — just ask.",
     suggestions: [
       "Tell me about you",
@@ -185,10 +186,10 @@ function experienceResponse(): AssistantResponse {
 
 function resumeResponse(): AssistantResponse {
   return {
-    type: "text",
+    type: "resume",
     message:
-      "You can download my resume below or connect with me directly.\n\n" +
-      "I’m always happy to talk about interesting problems.",
+      "Here's my professional background and experience.\n\n" +
+      "You can download the full PDF version for more details.",
     suggestions: [
       "Tell me about you",
       "Show me your projects",

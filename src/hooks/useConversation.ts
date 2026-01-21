@@ -144,6 +144,23 @@ export function useConversation() {
         }, 3000); // Show typing indicator for 3 seconds
       }
 
+      if (response.type === "resume") {
+        setTimeout(() => {
+          setMessages((msgs) => [
+            ...msgs,
+            {
+              id: crypto.randomUUID(),
+              role: "assistant",
+              kind: "resume",
+              content: response.message,
+            },
+          ]);
+
+          setSuggestions(response.suggestions ?? []);
+          setIsTyping(false);
+        }, 3000); // Show typing indicator for 3 seconds
+      }
+
       if (response.type === "text") {
         setTimeout(() => {
           setIsTyping(false);
