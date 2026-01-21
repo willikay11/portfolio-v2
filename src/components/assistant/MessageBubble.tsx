@@ -6,6 +6,7 @@ import { ProjectsMessageBubble } from "./Project";
 import { Profile } from "./Profile";
 import { Contact } from "./Contact";
 import { Skills } from "./Skill";
+import { Resume } from "./Resume";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeHighlight from "rehype-highlight";
@@ -98,6 +99,27 @@ export function MessageBubble({ message }: Props) {
         }}
       >
         <Skills />
+      </motion.div>
+    );
+  }
+
+  if (message.kind === "resume") {
+    return (
+      <motion.div
+        initial={{
+          opacity: 0,
+          y: 50,
+        }}
+        animate={{
+          opacity: 1,
+          y: 0,
+        }}
+        transition={{
+          duration: 0.4,
+          ease: "easeOut",
+        }}
+      >
+        <Resume />
       </motion.div>
     );
   }

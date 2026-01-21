@@ -3,7 +3,8 @@ export type Message =
   | ProfileMessage
   | ProjectsMessage
   | ContactMessage
-  | SkillsMessage;
+  | SkillsMessage
+  | ResumeMessage;
 
 export type BaseMessage = {
   id: string;
@@ -32,6 +33,11 @@ export type ContactMessage = BaseMessage & {
 
 export type SkillsMessage = BaseMessage & {
   kind: "skills";
+  content: string;
+};
+
+export type ResumeMessage = BaseMessage & {
+  kind: "resume";
   content: string;
 };
 
