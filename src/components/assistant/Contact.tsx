@@ -40,7 +40,7 @@ export function Contact() {
       icon: RiFileTextLine,
       label: "Resume",
       value: "Download CV",
-      href: "/resume.pdf",
+      href: "/resume/William%20Kamau%20Resume.pdf",
       color: "text-green-400",
       bgColor: "bg-green-500/10",
       hoverBg: "hover:bg-green-500/20",
