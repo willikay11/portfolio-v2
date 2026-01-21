@@ -65,11 +65,11 @@ export function Assistant() {
 
   return (
     <div className="flex h-screen flex-col bg-white dark:bg-neutral-950 text-neutral-900 dark:text-white">
-      <div className="grid grid-cols-12 gap-4">
-        <div className="md:col-start-4 md:col-end-10 flex h-screen flex-col">
+      <div className="w-full">
+        <div className="mx-auto max-w-4xl flex h-screen flex-col">
           <main
             ref={scrollRef}
-            className="flex-1 overflow-y-auto px-6 py-4 space-y-4"
+            className="flex-1 overflow-y-auto px-4 sm:px-6 py-4 space-y-4"
           >
             {messages.map((msg) => (
               <MessageBubble key={msg.id} message={msg} />
@@ -81,12 +81,12 @@ export function Assistant() {
           </main>
 
           {suggestions.length > 0 && (
-            <div className="border-t border-neutral-200 dark:border-neutral-800 px-6 py-3">
+            <div className="border-t border-neutral-200 dark:border-neutral-800 px-4 sm:px-6 py-3">
               <Suggestions items={suggestions} onSelect={sendMessage} />
             </div>
           )}
 
-          <div className="border-neutral-200 dark:border-neutral-800 px-6 py-4">
+          <div className="border-neutral-200 dark:border-neutral-800 px-4 sm:px-6 py-4">
             <InputBar onSend={sendMessage} />
           </div>
         </div>

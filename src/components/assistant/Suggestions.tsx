@@ -10,7 +10,7 @@ export function Suggestions({ items, onSelect }: Props) {
         <button
           key={item}
           onClick={() => onSelect(item)}
-          className="rounded-full border border-neutral-300 dark:border-neutral-700 px-4 py-1.5 text-sm text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition"
+          className="rounded-full border border-neutral-300 dark:border-neutral-700 px-3 sm:px-4 py-1.5 text-xs sm:text-sm text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition"
         >
           {item}
         </button>

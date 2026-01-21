@@ -6,28 +6,29 @@ import Image from "next/image";
 export function TukaiDescription({ primaryColor }: { primaryColor?: string }) {
   return (
     <div className="">
-      <div className="flex items-start gap-6 mb-8">
-        <div className="h-20 w-20 rounded-full items-center justify-center flex bg-[#047857] flex-shrink-0">
+      <div className="flex items-start gap-3 sm:gap-6 mb-6 sm:mb-8">
+        <div className="h-16 w-16 sm:h-20 sm:w-20 rounded-full items-center justify-center flex bg-[#11823B] flex-shrink-0">
           <Image
-            src="/images/logos/tukai-white.svg"
-            alt={`Tukai  Logo`}
+            src="/images/logos/tukai.svg"
+            alt={`Tukai Logo`}
             width={36}
             height={36}
+            className="w-6 h-6 sm:w-9 sm:h-9"
           />
         </div>
         <div className="flex-1">
-          <div className="flex flex-col justify-center gap-2 mb-4">
-            <h1 className="text-white text-4xl font-semibold">Tukai</h1>
-            <h3 className="text-xl font-bold text-white">
+          <div className="flex flex-col justify-center gap-1 sm:gap-2 mb-3 sm:mb-4">
+            <h1 className="text-white text-2xl sm:text-3xl md:text-4xl font-semibold">Tukai</h1>
+            <h3 className="text-base sm:text-lg md:text-xl font-bold text-white">
               Travel & Experiences Discovery Platform
             </h3>
           </div>
         </div>
       </div>
 
-      <div className="mb-8">
-        <p className="text-white font-semibold text-2xl mb-4">TL;DR</p>
-        <ul className="list-disc pl-6 space-y-2">
+      <div className="mb-6 sm:mb-8">
+        <p className="text-white font-semibold text-xl sm:text-2xl mb-3 sm:mb-4">TL;DR</p>
+        <ul className="list-disc pl-4 sm:pl-6 space-y-2 text-sm sm:text-base">
           <li className="text-white italic">
             Built and owned the frontend architecture for Tukai's web
             experience, a mobile-first platform for discovering unique places,
@@ -64,49 +65,49 @@ export function TukaiDescription({ primaryColor }: { primaryColor?: string }) {
             <TabsTrigger
               key="overview"
               value="overview"
-              className="bg-transparent data-[state=active]:bg-white/20 rounded-none text-white/70 data-[state=active]:text-white px-6 py-3 font-medium transition-all"
+              className="bg-transparent data-[state=active]:bg-white/20 rounded-none text-white/70 data-[state=active]:text-white px-3 sm:px-6 py-2 sm:py-3 font-medium transition-all text-sm sm:text-base whitespace-nowrap"
             >
               Overview
             </TabsTrigger>
             <TabsTrigger
               key="problemStatement"
               value="problemStatement"
-              className="bg-transparent data-[state=active]:bg-white/20 rounded-none text-white/70 data-[state=active]:text-white px-6 py-3 font-medium transition-all"
+              className="bg-transparent data-[state=active]:bg-white/20 rounded-none text-white/70 data-[state=active]:text-white px-3 sm:px-6 py-2 sm:py-3 font-medium transition-all text-sm sm:text-base whitespace-nowrap"
             >
               Problem Statement
             </TabsTrigger>
             <TabsTrigger
               key="myRole"
               value="myRole"
-              className="bg-transparent data-[state=active]:bg-white/20 rounded-none text-white/70 data-[state=active]:text-white px-6 py-3 font-medium transition-all"
+              className="bg-transparent data-[state=active]:bg-white/20 rounded-none text-white/70 data-[state=active]:text-white px-3 sm:px-6 py-2 sm:py-3 font-medium transition-all text-sm sm:text-base whitespace-nowrap"
             >
               My Role
             </TabsTrigger>
             <TabsTrigger
               key="frontendArchitecture"
               value="frontendArchitecture"
-              className="bg-transparent data-[state=active]:bg-white/20 rounded-none text-white/70 data-[state=active]:text-white px-6 py-3 font-medium transition-all"
+              className="bg-transparent data-[state=active]:bg-white/20 rounded-none text-white/70 data-[state=active]:text-white px-3 sm:px-6 py-2 sm:py-3 font-medium transition-all text-sm sm:text-base whitespace-nowrap"
             >
               Architecture & Tech Decisions
             </TabsTrigger>
             <TabsTrigger
               key="performance"
               value="performance"
-              className="bg-transparent data-[state=active]:bg-white/20 rounded-none text-white/70 data-[state=active]:text-white px-6 py-3 font-medium transition-all"
+              className="bg-transparent data-[state=active]:bg-white/20 rounded-none text-white/70 data-[state=active]:text-white px-3 sm:px-6 py-2 sm:py-3 font-medium transition-all text-sm sm:text-base whitespace-nowrap"
             >
               Performance
             </TabsTrigger>
             <TabsTrigger
               key="outcomes"
               value="outcomes"
-              className="bg-transparent data-[state=active]:bg-white/20 rounded-none text-white/70 data-[state=active]:text-white px-6 py-3 font-medium transition-all"
+              className="bg-transparent data-[state=active]:bg-white/20 rounded-none text-white/70 data-[state=active]:text-white px-3 sm:px-6 py-2 sm:py-3 font-medium transition-all text-sm sm:text-base whitespace-nowrap"
             >
               Outcomes
             </TabsTrigger>
             <TabsTrigger
               key="whatIWouldImproveNext"
               value="whatIWouldImproveNext"
-              className="bg-transparent data-[state=active]:bg-white/20 rounded-none text-white/70 data-[state=active]:text-white px-6 py-3 font-medium transition-all"
+              className="bg-transparent data-[state=active]:bg-white/20 rounded-none text-white/70 data-[state=active]:text-white px-3 sm:px-6 py-2 sm:py-3 font-medium transition-all text-sm sm:text-base whitespace-nowrap"
             >
               Improvements
             </TabsTrigger>
