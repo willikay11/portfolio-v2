@@ -50,7 +50,7 @@ function greetingResponse(): AssistantResponse {
   return {
     type: "text",
     message:
-      "Hey 👋 I’m William, a Lead Software Engineer.\n\n" +
+      "Hey 👋 I’m William, a Full Stack Software Engineer.\n\n" +
       "You can explore my work, skills, or experience — just ask.",
     suggestions: [
       "Tell me about you",
