@@ -8,6 +8,7 @@ import {
   RiRocketLine,
   RiLightbulbLine,
 } from "@remixicon/react";
+import Link from "next/link";
 
 export function Profile() {
   const highlights = [
@@ -90,9 +91,9 @@ export function Profile() {
               >
                 Technical leader specializing in building scalable systems and
                 leading high-performing engineering teams at{" "}
-                <span className="text-blue-400 font-medium">
+                <Link href="https://gapstack.com" target="_blank" className="text-blue-400 font-medium underline">
                   Gapstack Limited
-                </span>
+                </Link>
                 .
               </motion.p>
 

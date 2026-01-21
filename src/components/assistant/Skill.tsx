@@ -24,7 +24,7 @@ export function Skills() {
       icon: RiReactjsLine,
       color: "text-blue-400",
       bgColor: "bg-blue-500/10",
-      skills: ["React"],
+      skills: ["HTML/CSS", "Tailwind CSS", "React"],
     },
     {
       title: "Mobile",
@@ -38,7 +38,7 @@ export function Skills() {
       icon: RiServerLine,
       color: "text-green-400",
       bgColor: "bg-green-500/10",
-      skills: ["Go", "Python", "Kafka"],
+      skills: ["Javascript", "TypeScript", "Node.js", "Go", "Python", "Kafka"],
     },
     {
       title: "Databases",
