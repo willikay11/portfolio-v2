@@ -12,28 +12,66 @@ export function Resume() {
     {
       title: "Lead Software Engineer",
       company: "Gapstack Limited",
-      period: "2020 - Present",
-      description: "Leading engineering teams and architecting scalable systems",
+      period: "Aug 2020 - Present",
+      description: "Leading engineering excellence and driving platform innovation for scalable software solutions",
       highlights: [
-        "Led development of multiple high-impact projects",
-        "Mentored junior engineers and established best practices",
-        "Drove technical decisions aligning with business goals",
+        "Successfully led a team of 4 engineers to deliver multiple high-impact platforms on time and within budget",
+        "Architected and implemented scalable, API-centric infrastructure serving thousands of users",
+        "Collaborated with cross-functional stakeholders to resolve critical technical roadblocks, improving delivery velocity by 40%",
+        "Designed and developed maintainable React-based user interfaces with robust backend architecture",
+      ],
+    },
+    {
+      title: "Frontend Engineer",
+      company: "BRCK",
+      period: "Nov 2019 - Jun 2020",
+      description: "Delivered exceptional user experiences through innovative frontend solutions",
+      highlights: [
+        "Developed responsive React and Angular components, improving user engagement across multiple device types",
+        "Translated complex UX/business requirements into elegant, maintainable code solutions",
+        "Collaborated closely with UX/UI designers to ensure pixel-perfect implementation and seamless user experience",
+        "Optimized web application performance, reducing load times and enhancing user satisfaction",
+      ],
+    },
+    {
+      title: "Frontend Engineer", 
+      company: "Ajua",
+      period: "Nov 2018 - Nov 2019",
+      description: "Built high-performance, responsive web applications for diverse user needs",
+      highlights: [
+        "Implemented responsive interfaces optimized for various screen sizes, ensuring consistent user experience",
+        "Collaborated with product teams to transform requirements into actionable development plans",
+        "Enhanced platform performance through strategic optimization techniques, reducing page load times by 30%",
+        "Worked with QA teams to maintain high quality standards and deliver bug-free solutions",
+      ],
+    },
+    {
+      title: "Software Engineer",
+      company: "Cytonn Investments", 
+      period: "Aug 2016 - Nov 2018",
+      description: "Developed scalable software solutions for financial services and internal operations",
+      highlights: [
+        "Built company website and internal CRM platform, streamlining business operations",
+        "Collaborated with development and testing teams to deliver robust solutions meeting client requirements",
+        "Designed solutions for functionality, scalability, and performance in the financial technology sector",
       ],
     },
   ];
 
   const education = [
     {
-      degree: "Bachelor of Science in Computer Science",
-      institution: "University",
-      period: "2015 - 2019",
+      degree: "Bachelor of Science in Informatics",
+      institution: "Strathmore University",
+      period: "Nairobi, Kenya",
     },
   ];
 
   const achievements = [
-    "Built scalable systems serving thousands of users",
-    "Reduced system response time by 40% through optimization",
-    "Successfully delivered 10+ production-ready projects",
+    "Led engineering teams to deliver 10+ production-ready platforms serving thousands of users",
+    "Improved platform performance by 40% through strategic architecture decisions and optimization",
+    "Successfully managed complex technical projects from conception to deployment",
+    "Mentored and developed junior engineers, fostering technical excellence and career growth",
+    "Established development best practices and quality standards across multiple organizations",
   ];
 
   return (
