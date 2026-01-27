@@ -64,49 +64,49 @@ export function PortfolioDescription({
             <TabsTrigger
               key="overview"
               value="overview"
-              className="bg-transparent data-[state=active]:bg-white/20 rounded-none text-white font-medium data-[state=active]:font-bold px-3 sm:px-6 py-2 sm:py-3 transition-all text-sm sm:text-base whitespace-nowrap"
+              className="bg-transparent data-[state=active]:bg-white/20 rounded-none text-white/60 hover:text-white/80 data-[state=active]:text-white font-medium data-[state=active]:font-bold px-3 sm:px-6 py-2 sm:py-3 transition-all text-sm sm:text-base whitespace-nowrap"
             >
               Overview
             </TabsTrigger>
             <TabsTrigger
               key="problemStatement"
               value="problemStatement"
-              className="bg-transparent data-[state=active]:bg-white/20 rounded-none text-white font-medium data-[state=active]:font-bold px-3 sm:px-6 py-2 sm:py-3 transition-all text-sm sm:text-base whitespace-nowrap"
+              className="bg-transparent data-[state=active]:bg-white/20 rounded-none text-white/60 hover:text-white/80 data-[state=active]:text-white font-medium data-[state=active]:font-bold px-3 sm:px-6 py-2 sm:py-3 transition-all text-sm sm:text-base whitespace-nowrap"
             >
               Problem Statement
             </TabsTrigger>
             <TabsTrigger
               key="myRole"
               value="myRole"
-              className="bg-transparent data-[state=active]:bg-white/20 rounded-none text-white font-medium data-[state=active]:font-bold px-3 sm:px-6 py-2 sm:py-3 transition-all text-sm sm:text-base whitespace-nowrap"
+              className="bg-transparent data-[state=active]:bg-white/20 rounded-none text-white/60 hover:text-white/80 data-[state=active]:text-white font-medium data-[state=active]:font-bold px-3 sm:px-6 py-2 sm:py-3 transition-all text-sm sm:text-base whitespace-nowrap"
             >
               My Role
             </TabsTrigger>
             <TabsTrigger
               key="architecture"
               value="architecture"
-              className="bg-transparent data-[state=active]:bg-white/20 rounded-none text-white font-medium data-[state=active]:font-bold px-3 sm:px-6 py-2 sm:py-3 transition-all text-sm sm:text-base whitespace-nowrap"
+              className="bg-transparent data-[state=active]:bg-white/20 rounded-none text-white/60 hover:text-white/80 data-[state=active]:text-white font-medium data-[state=active]:font-bold px-3 sm:px-6 py-2 sm:py-3 transition-all text-sm sm:text-base whitespace-nowrap"
             >
               Architecture & Tech Stack
             </TabsTrigger>
             <TabsTrigger
               key="features"
               value="features"
-              className="bg-transparent data-[state=active]:bg-white/20 rounded-none text-white font-medium data-[state=active]:font-bold px-3 sm:px-6 py-2 sm:py-3 transition-all text-sm sm:text-base whitespace-nowrap"
+              className="bg-transparent data-[state=active]:bg-white/20 rounded-none text-white/60 hover:text-white/80 data-[state=active]:text-white font-medium data-[state=active]:font-bold px-3 sm:px-6 py-2 sm:py-3 transition-all text-sm sm:text-base whitespace-nowrap"
             >
               Key Features
             </TabsTrigger>
             <TabsTrigger
               key="outcomes"
               value="outcomes"
-              className="bg-transparent data-[state=active]:bg-white/20 rounded-none text-white font-medium data-[state=active]:font-bold px-3 sm:px-6 py-2 sm:py-3 transition-all text-sm sm:text-base whitespace-nowrap"
+              className="bg-transparent data-[state=active]:bg-white/20 rounded-none text-white/60 hover:text-white/80 data-[state=active]:text-white font-medium data-[state=active]:font-bold px-3 sm:px-6 py-2 sm:py-3 transition-all text-sm sm:text-base whitespace-nowrap"
             >
               Outcomes
             </TabsTrigger>
             <TabsTrigger
               key="learnings"
               value="learnings"
-              className="bg-transparent data-[state=active]:bg-white/20 rounded-none text-white font-medium data-[state=active]:font-bold px-3 sm:px-6 py-2 sm:py-3 transition-all text-sm sm:text-base whitespace-nowrap"
+              className="bg-transparent data-[state=active]:bg-white/20 rounded-none text-white/60 hover:text-white/80 data-[state=active]:text-white font-medium data-[state=active]:font-bold px-3 sm:px-6 py-2 sm:py-3 transition-all text-sm sm:text-base whitespace-nowrap"
             >
               Key Learnings
             </TabsTrigger>
