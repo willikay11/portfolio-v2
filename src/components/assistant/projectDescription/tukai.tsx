@@ -2,6 +2,7 @@
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Image from "next/image";
+import { getOptimizedImageUrl } from "@/lib/cloudinary";
 
 export function TukaiDescription({ primaryColor }: { primaryColor?: string }) {
   return (
@@ -51,7 +52,7 @@ export function TukaiDescription({ primaryColor }: { primaryColor?: string }) {
 
       <div className="rounded-2xl overflow-hidden bg-white mt-12 mb-12">
         <Image
-          src="/images/projects/tukai/hero.png"
+          src={getOptimizedImageUrl("v1769516549/tukai/hero_cebuop")}
           alt="Tukai Hero Image"
           width={1200}
           height={675}

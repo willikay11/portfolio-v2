@@ -2,6 +2,7 @@
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Image from "next/image";
+import { getOptimizedImageUrl, getBlurDataUrl } from "@/lib/cloudinary";
 
 export function SolgatesDescription({
   primaryColor,
@@ -54,11 +55,15 @@ export function SolgatesDescription({
 
       <div className="rounded-2xl overflow-hidden bg-white mt-12 mb-12">
         <Image
-          src="/images/projects/solgates/hero.png"
+          src={getOptimizedImageUrl("v1769516501/solgates-fashion/hero_rb5n2l", {
+          })}
           alt="Solgates Hero Image"
           width={1200}
           height={675}
           className="w-full h-auto"
+          placeholder="blur"
+          blurDataURL={getBlurDataUrl("v1769516501/solgates-fashion/hero_rb5n2l")}
+          priority
         />
       </div>
 

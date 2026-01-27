@@ -2,6 +2,7 @@
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Image from "next/image";
+import { getOptimizedImageUrl } from "@/lib/cloudinary";
 
 export function PortfolioDescription({
   primaryColor,
@@ -50,7 +51,9 @@ export function PortfolioDescription({
 
       <div className="rounded-2xl overflow-hidden bg-white mt-12 mb-12">
         <Image
-          src="/images/projects/portfolio/hero.png"
+          src={getOptimizedImageUrl("v1769516620/portfolio/hero-black_bzm4jp.png", {
+            effects: ["improve"],
+          })}
           alt="Portfolio Hero Image"
           width={1200}
           height={675}

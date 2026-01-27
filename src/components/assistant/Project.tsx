@@ -3,6 +3,7 @@
 import { Project, ProjectsMessage } from "@/types";
 import { Drawer, DrawerContent } from "@/components/ui/drawer";
 import { useState } from "react";
+import { getOptimizedImageUrl } from "@/lib/cloudinary";
 
 export function ProjectsMessageBubble({
   message,
@@ -31,7 +32,11 @@ export function ProjectsMessageBubble({
             <div
               className="absolute inset-0 transition-transform duration-300 group-hover:scale-105"
               style={{
-                backgroundImage: `url(${project.heroImageUrl})`,
+                backgroundImage: `url(${getOptimizedImageUrl(project.heroImageUrl, {
+                  width: 800,
+                  quality: 85,
+                  format: "auto"
+                })})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
               }}
