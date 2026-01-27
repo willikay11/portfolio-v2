@@ -2,6 +2,7 @@
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Image from "next/image";
+import { getOptimizedImageUrl } from "@/lib/cloudinary";
 
 export function PortfolioDescription({
   primaryColor,
@@ -50,7 +51,9 @@ export function PortfolioDescription({
 
       <div className="rounded-2xl overflow-hidden bg-white mt-12 mb-12">
         <Image
-          src="/images/projects/portfolio/hero.png"
+          src={getOptimizedImageUrl("v1769516620/portfolio/hero-black_bzm4jp.png", {
+            effects: ["improve"],
+          })}
           alt="Portfolio Hero Image"
           width={1200}
           height={675}
@@ -64,49 +67,49 @@ export function PortfolioDescription({
             <TabsTrigger
               key="overview"
               value="overview"
-              className="bg-transparent data-[state=active]:bg-white/20 rounded-none text-white font-medium data-[state=active]:font-bold px-3 sm:px-6 py-2 sm:py-3 transition-all text-sm sm:text-base whitespace-nowrap"
+              className="bg-transparent data-[state=active]:bg-white/20 rounded-none text-white/60 hover:text-white/80 data-[state=active]:text-white font-medium data-[state=active]:font-bold px-3 sm:px-6 py-2 sm:py-3 transition-all text-sm sm:text-base whitespace-nowrap"
             >
               Overview
             </TabsTrigger>
             <TabsTrigger
               key="problemStatement"
               value="problemStatement"
-              className="bg-transparent data-[state=active]:bg-white/20 rounded-none text-white font-medium data-[state=active]:font-bold px-3 sm:px-6 py-2 sm:py-3 transition-all text-sm sm:text-base whitespace-nowrap"
+              className="bg-transparent data-[state=active]:bg-white/20 rounded-none text-white/60 hover:text-white/80 data-[state=active]:text-white font-medium data-[state=active]:font-bold px-3 sm:px-6 py-2 sm:py-3 transition-all text-sm sm:text-base whitespace-nowrap"
             >
               Problem Statement
             </TabsTrigger>
             <TabsTrigger
               key="myRole"
               value="myRole"
-              className="bg-transparent data-[state=active]:bg-white/20 rounded-none text-white font-medium data-[state=active]:font-bold px-3 sm:px-6 py-2 sm:py-3 transition-all text-sm sm:text-base whitespace-nowrap"
+              className="bg-transparent data-[state=active]:bg-white/20 rounded-none text-white/60 hover:text-white/80 data-[state=active]:text-white font-medium data-[state=active]:font-bold px-3 sm:px-6 py-2 sm:py-3 transition-all text-sm sm:text-base whitespace-nowrap"
             >
               My Role
             </TabsTrigger>
             <TabsTrigger
               key="architecture"
               value="architecture"
-              className="bg-transparent data-[state=active]:bg-white/20 rounded-none text-white font-medium data-[state=active]:font-bold px-3 sm:px-6 py-2 sm:py-3 transition-all text-sm sm:text-base whitespace-nowrap"
+              className="bg-transparent data-[state=active]:bg-white/20 rounded-none text-white/60 hover:text-white/80 data-[state=active]:text-white font-medium data-[state=active]:font-bold px-3 sm:px-6 py-2 sm:py-3 transition-all text-sm sm:text-base whitespace-nowrap"
             >
               Architecture & Tech Stack
             </TabsTrigger>
             <TabsTrigger
               key="features"
               value="features"
-              className="bg-transparent data-[state=active]:bg-white/20 rounded-none text-white font-medium data-[state=active]:font-bold px-3 sm:px-6 py-2 sm:py-3 transition-all text-sm sm:text-base whitespace-nowrap"
+              className="bg-transparent data-[state=active]:bg-white/20 rounded-none text-white/60 hover:text-white/80 data-[state=active]:text-white font-medium data-[state=active]:font-bold px-3 sm:px-6 py-2 sm:py-3 transition-all text-sm sm:text-base whitespace-nowrap"
             >
               Key Features
             </TabsTrigger>
             <TabsTrigger
               key="outcomes"
               value="outcomes"
-              className="bg-transparent data-[state=active]:bg-white/20 rounded-none text-white font-medium data-[state=active]:font-bold px-3 sm:px-6 py-2 sm:py-3 transition-all text-sm sm:text-base whitespace-nowrap"
+              className="bg-transparent data-[state=active]:bg-white/20 rounded-none text-white/60 hover:text-white/80 data-[state=active]:text-white font-medium data-[state=active]:font-bold px-3 sm:px-6 py-2 sm:py-3 transition-all text-sm sm:text-base whitespace-nowrap"
             >
               Outcomes
             </TabsTrigger>
             <TabsTrigger
               key="learnings"
               value="learnings"
-              className="bg-transparent data-[state=active]:bg-white/20 rounded-none text-white font-medium data-[state=active]:font-bold px-3 sm:px-6 py-2 sm:py-3 transition-all text-sm sm:text-base whitespace-nowrap"
+              className="bg-transparent data-[state=active]:bg-white/20 rounded-none text-white/60 hover:text-white/80 data-[state=active]:text-white font-medium data-[state=active]:font-bold px-3 sm:px-6 py-2 sm:py-3 transition-all text-sm sm:text-base whitespace-nowrap"
             >
               Key Learnings
             </TabsTrigger>
